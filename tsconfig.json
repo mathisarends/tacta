@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": {
+      "@tacta/core": ["./packages/core/src/index.ts"],
+      "@tacta/core/*": ["./packages/core/src/*"],
+      "@tacta/chat": ["./packages/chat/src/index.ts"],
+      "@tacta/chat/*": ["./packages/chat/src/*"],
+      "@tacta/workspace": ["./packages/workspace/src/index.ts"],
+      "@tacta/workspace/*": ["./packages/workspace/src/*"],
+      "@tacta/workspace/register": ["./packages/workspace/src/register.ts"]
+    },
+    "types": ["node", "vite/client"]
+  },
+  "include": ["packages/*/src/**/*.ts", "test/**/*.ts", "examples/**/*.ts", "vitest.config.ts"]
+}

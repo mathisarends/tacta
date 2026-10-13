@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 56px max(24px, calc((100vw - 1100px) / 2));
+  font-family: system-ui, sans-serif;
+  color: #202124;
+  background: #f4f5f7;
+}
+header {
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 12px 0 20px;
+}
+p {
+  line-height: 1.6;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  color: #727786;
+}
+main {
+  display: grid;
+  gap: 28px;
+}
+.demo {
+  border: 1px solid var(--tacta-color-border-strong);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--tacta-color-background);
+  color: var(--tacta-color-text);
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--tacta-color-border-strong);
+}
+h2 {
+  flex: 1;
+  margin: 0;
+  font-size: 15px;
+}
+output {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--tacta-color-muted);
+}
+.stage {
+  display: flex;
+  height: 280px;
+  overflow: hidden;
+}
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 24px;
+  overflow: auto;
+}
+.panel,
+.explorer {
+  flex: 0 0 auto;
+  padding: 24px;
+  background: var(--tacta-color-surface);
+  overflow: auto;
+}
+.resizing {
+  user-select: none;
+  cursor: col-resize;
+}
+.demo.colorful {
+  --tacta-color-background: #fffcf7;
+  --tacta-color-surface: #f2e8fa;
+  --tacta-color-text: #35234b;
+  --tacta-color-focus: #7c3aed;
+  --tacta-color-border-strong: #c7a5e5;
+  --tacta-explorer-splitter-size: 8px;
+}
+.colorful tacta-explorer-splitter::part(handle) {
+  border-radius: 4px;
+}
+ul {
+  padding-left: 16px;
+  line-height: 2;
+  font-size: 14px;
+}
+button {
+  font: inherit;
+  font-size: 12px;
+  border: 1px solid var(--tacta-color-border-strong);
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: var(--tacta-color-surface);
+  color: inherit;
+  cursor: pointer;
+}
+button:focus-visible {
+  outline: 2px solid var(--tacta-color-focus);
+}
+[hidden] {
+  display: none !important;
+}
+footer {
+  margin-top: 32px;
+  color: #727786;
+  font-size: 12px;
+}
+@media (max-width: 650px) {
+  body {
+    padding: 24px 12px;
+  }
+  .content,
+  .panel,
+  .explorer {
+    padding: 12px;
+  }
+}

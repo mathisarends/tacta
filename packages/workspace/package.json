@@ -1,0 +1,148 @@
+{
+  "name": "@tacta/workspace",
+  "version": "0.1.0",
+  "description": "Reusable UI primitives and workspace components built with Lit",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathisarends/tacta.git",
+    "directory": "packages/workspace"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/register.js",
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./panel-splitter": {
+      "types": "./dist/panel-splitter.d.ts",
+      "default": "./dist/panel-splitter.js"
+    },
+    "./explorer-splitter": {
+      "types": "./dist/explorer-splitter.d.ts",
+      "default": "./dist/explorer-splitter.js"
+    },
+    "./messages/de": {
+      "types": "./dist/messages/de.d.ts",
+      "default": "./dist/messages/de.js"
+    },
+    "./messages/en": {
+      "types": "./dist/messages/en.d.ts",
+      "default": "./dist/messages/en.js"
+    },
+    "./messages": {
+      "types": "./dist/messages/index.d.ts",
+      "default": "./dist/messages/index.js"
+    },
+    "./navigation-types": {
+      "types": "./dist/navigation-types.d.ts",
+      "default": "./dist/navigation-types.js"
+    },
+    "./sidebar/conversation-row": {
+      "types": "./dist/sidebar/conversation-row.d.ts",
+      "default": "./dist/sidebar/conversation-row.js"
+    },
+    "./sidebar": {
+      "types": "./dist/sidebar/index.d.ts",
+      "default": "./dist/sidebar/index.js"
+    },
+    "./sidebar/messages/de": {
+      "types": "./dist/sidebar/messages/de.d.ts",
+      "default": "./dist/sidebar/messages/de.js"
+    },
+    "./sidebar/messages/en": {
+      "types": "./dist/sidebar/messages/en.d.ts",
+      "default": "./dist/sidebar/messages/en.js"
+    },
+    "./sidebar/messages": {
+      "types": "./dist/sidebar/messages/index.d.ts",
+      "default": "./dist/sidebar/messages/index.js"
+    },
+    "./sidebar/profile-menu": {
+      "types": "./dist/sidebar/profile-menu.d.ts",
+      "default": "./dist/sidebar/profile-menu.js"
+    },
+    "./sidebar/rename-dialog": {
+      "types": "./dist/sidebar/rename-dialog.d.ts",
+      "default": "./dist/sidebar/rename-dialog.js"
+    },
+    "./sidebar/side-bar.styles": {
+      "types": "./dist/sidebar/side-bar.styles.d.ts",
+      "default": "./dist/sidebar/side-bar.styles.js"
+    },
+    "./sidebar/side-bar": {
+      "types": "./dist/sidebar/side-bar.d.ts",
+      "default": "./dist/sidebar/side-bar.js"
+    },
+    "./sidebar/types": {
+      "types": "./dist/sidebar/types.d.ts",
+      "default": "./dist/sidebar/types.js"
+    },
+    "./sidebar/user-profile": {
+      "types": "./dist/sidebar/user-profile.d.ts",
+      "default": "./dist/sidebar/user-profile.js"
+    },
+    "./surface-menu": {
+      "types": "./dist/surface-menu.d.ts",
+      "default": "./dist/surface-menu.js"
+    },
+    "./surface-picker.styles": {
+      "types": "./dist/surface-picker.styles.d.ts",
+      "default": "./dist/surface-picker.styles.js"
+    },
+    "./surface-picker": {
+      "types": "./dist/surface-picker.d.ts",
+      "default": "./dist/surface-picker.js"
+    },
+    "./surfaces": {
+      "types": "./dist/surfaces.d.ts",
+      "default": "./dist/surfaces.js"
+    },
+    "./tab-drag-controller": {
+      "types": "./dist/tab-drag-controller.d.ts",
+      "default": "./dist/tab-drag-controller.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    },
+    "./workspace-tab-bar": {
+      "types": "./dist/workspace-tab-bar.d.ts",
+      "default": "./dist/workspace-tab-bar.js"
+    },
+    "./workspace-tab": {
+      "types": "./dist/workspace-tab.d.ts",
+      "default": "./dist/workspace-tab.js"
+    },
+    "./workspace-tabs.styles": {
+      "types": "./dist/workspace-tabs.styles.d.ts",
+      "default": "./dist/workspace-tabs.styles.js"
+    },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    },
+    "./split-pane": {
+      "types": "./dist/split-pane.d.ts",
+      "default": "./dist/split-pane.js"
+    }
+  },
+  "dependencies": {
+    "@tacta/core": "0.1.0",
+    "lit": "^3.3.3"
+  }
+}

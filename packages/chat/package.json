@@ -1,0 +1,268 @@
+{
+  "name": "@tacta/chat",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@tacta/core": "0.1.0",
+    "lit": "^3.3.3",
+    "marked": "^18.0.9",
+    "dompurify": "^3.4.14",
+    "@codemirror/language": "^6.13.1",
+    "@codemirror/language-data": "^6.5.2",
+    "@lezer/highlight": "^1.2.5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./approval-card.styles": {
+      "types": "./dist/approval-card.styles.d.ts",
+      "default": "./dist/approval-card.styles.js"
+    },
+    "./approval-card": {
+      "types": "./dist/approval-card.d.ts",
+      "default": "./dist/approval-card.js"
+    },
+    "./approval-options": {
+      "types": "./dist/approval-options.d.ts",
+      "default": "./dist/approval-options.js"
+    },
+    "./assistant-message": {
+      "types": "./dist/assistant-message.d.ts",
+      "default": "./dist/assistant-message.js"
+    },
+    "./chat-attachment": {
+      "types": "./dist/chat-attachment.d.ts",
+      "default": "./dist/chat-attachment.js"
+    },
+    "./chat-message-list": {
+      "types": "./dist/chat-message-list.d.ts",
+      "default": "./dist/chat-message-list.js"
+    },
+    "./chat-message-navigation.styles": {
+      "types": "./dist/chat-message-navigation.styles.d.ts",
+      "default": "./dist/chat-message-navigation.styles.js"
+    },
+    "./chat-message-navigation": {
+      "types": "./dist/chat-message-navigation.d.ts",
+      "default": "./dist/chat-message-navigation.js"
+    },
+    "./chat-navigation": {
+      "types": "./dist/chat-navigation.d.ts",
+      "default": "./dist/chat-navigation.js"
+    },
+    "./composer/chat-composer.styles": {
+      "types": "./dist/composer/chat-composer.styles.d.ts",
+      "default": "./dist/composer/chat-composer.styles.js"
+    },
+    "./composer/chat-composer": {
+      "types": "./dist/composer/chat-composer.d.ts",
+      "default": "./dist/composer/chat-composer.js"
+    },
+    "./composer/chat-send-button": {
+      "types": "./dist/composer/chat-send-button.d.ts",
+      "default": "./dist/composer/chat-send-button.js"
+    },
+    "./composer/composer-attachments": {
+      "types": "./dist/composer/composer-attachments.d.ts",
+      "default": "./dist/composer/composer-attachments.js"
+    },
+    "./composer/composer-draft": {
+      "types": "./dist/composer/composer-draft.d.ts",
+      "default": "./dist/composer/composer-draft.js"
+    },
+    "./composer/composer-dropzone": {
+      "types": "./dist/composer/composer-dropzone.d.ts",
+      "default": "./dist/composer/composer-dropzone.js"
+    },
+    "./composer/composer-input": {
+      "types": "./dist/composer/composer-input.d.ts",
+      "default": "./dist/composer/composer-input.js"
+    },
+    "./composer/composer-menu.styles": {
+      "types": "./dist/composer/composer-menu.styles.d.ts",
+      "default": "./dist/composer/composer-menu.styles.js"
+    },
+    "./composer/composer-menu": {
+      "types": "./dist/composer/composer-menu.d.ts",
+      "default": "./dist/composer/composer-menu.js"
+    },
+    "./composer/composer-question.styles": {
+      "types": "./dist/composer/composer-question.styles.d.ts",
+      "default": "./dist/composer/composer-question.styles.js"
+    },
+    "./composer/composer-question": {
+      "types": "./dist/composer/composer-question.d.ts",
+      "default": "./dist/composer/composer-question.js"
+    },
+    "./composer/composer-settings": {
+      "types": "./dist/composer/composer-settings.d.ts",
+      "default": "./dist/composer/composer-settings.js"
+    },
+    "./composer/composer-toolbar": {
+      "types": "./dist/composer/composer-toolbar.d.ts",
+      "default": "./dist/composer/composer-toolbar.js"
+    },
+    "./composer": {
+      "types": "./dist/composer/index.d.ts",
+      "default": "./dist/composer/index.js"
+    },
+    "./composer/model-menu.styles": {
+      "types": "./dist/composer/model-menu.styles.d.ts",
+      "default": "./dist/composer/model-menu.styles.js"
+    },
+    "./composer/model-menu": {
+      "types": "./dist/composer/model-menu.d.ts",
+      "default": "./dist/composer/model-menu.js"
+    },
+    "./composer/model-provider": {
+      "types": "./dist/composer/model-provider.d.ts",
+      "default": "./dist/composer/model-provider.js"
+    },
+    "./composer/options": {
+      "types": "./dist/composer/options.d.ts",
+      "default": "./dist/composer/options.js"
+    },
+    "./composer/provider-rail": {
+      "types": "./dist/composer/provider-rail.d.ts",
+      "default": "./dist/composer/provider-rail.js"
+    },
+    "./composer/queued-messages": {
+      "types": "./dist/composer/queued-messages.d.ts",
+      "default": "./dist/composer/queued-messages.js"
+    },
+    "./composer/reasoning-effort": {
+      "types": "./dist/composer/reasoning-effort.d.ts",
+      "default": "./dist/composer/reasoning-effort.js"
+    },
+    "./history-messages": {
+      "types": "./dist/history-messages.d.ts",
+      "default": "./dist/history-messages.js"
+    },
+    "./human-message": {
+      "types": "./dist/human-message.d.ts",
+      "default": "./dist/human-message.js"
+    },
+    "./image-viewer": {
+      "types": "./dist/image-viewer.d.ts",
+      "default": "./dist/image-viewer.js"
+    },
+    "./markdown/highlight-code": {
+      "types": "./dist/markdown/highlight-code.d.ts",
+      "default": "./dist/markdown/highlight-code.js"
+    },
+    "./markdown": {
+      "types": "./dist/markdown/index.d.ts",
+      "default": "./dist/markdown/index.js"
+    },
+    "./markdown/render": {
+      "types": "./dist/markdown/render.d.ts",
+      "default": "./dist/markdown/render.js"
+    },
+    "./markdown/styles": {
+      "types": "./dist/markdown/styles.d.ts",
+      "default": "./dist/markdown/styles.js"
+    },
+    "./messages/de": {
+      "types": "./dist/messages/de.d.ts",
+      "default": "./dist/messages/de.js"
+    },
+    "./messages/en": {
+      "types": "./dist/messages/en.d.ts",
+      "default": "./dist/messages/en.js"
+    },
+    "./messages": {
+      "types": "./dist/messages/index.d.ts",
+      "default": "./dist/messages/index.js"
+    },
+    "./navigation-types": {
+      "types": "./dist/navigation-types.d.ts",
+      "default": "./dist/navigation-types.js"
+    },
+    "./presenter": {
+      "types": "./dist/presenter.d.ts",
+      "default": "./dist/presenter.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./tool-calls": {
+      "types": "./dist/tool-calls/index.d.ts",
+      "default": "./dist/tool-calls/index.js"
+    },
+    "./tool-calls/json-highlight": {
+      "types": "./dist/tool-calls/json-highlight.d.ts",
+      "default": "./dist/tool-calls/json-highlight.js"
+    },
+    "./tool-calls/presenter": {
+      "types": "./dist/tool-calls/presenter.d.ts",
+      "default": "./dist/tool-calls/presenter.js"
+    },
+    "./tool-calls/tool-call-detail": {
+      "types": "./dist/tool-calls/tool-call-detail.d.ts",
+      "default": "./dist/tool-calls/tool-call-detail.js"
+    },
+    "./tool-calls/tool-call-item": {
+      "types": "./dist/tool-calls/tool-call-item.d.ts",
+      "default": "./dist/tool-calls/tool-call-item.js"
+    },
+    "./tool-calls/tool-call-list": {
+      "types": "./dist/tool-calls/tool-call-list.d.ts",
+      "default": "./dist/tool-calls/tool-call-list.js"
+    },
+    "./tool-calls/tool-call.styles": {
+      "types": "./dist/tool-calls/tool-call.styles.d.ts",
+      "default": "./dist/tool-calls/tool-call.styles.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    },
+    "./voice-input": {
+      "types": "./dist/voice-input/index.d.ts",
+      "default": "./dist/voice-input/index.js"
+    },
+    "./voice-input/messages/de": {
+      "types": "./dist/voice-input/messages/de.d.ts",
+      "default": "./dist/voice-input/messages/de.js"
+    },
+    "./voice-input/messages/en": {
+      "types": "./dist/voice-input/messages/en.d.ts",
+      "default": "./dist/voice-input/messages/en.js"
+    },
+    "./voice-input/messages": {
+      "types": "./dist/voice-input/messages/index.d.ts",
+      "default": "./dist/voice-input/messages/index.js"
+    },
+    "./voice-input/speech-session": {
+      "types": "./dist/voice-input/speech-session.d.ts",
+      "default": "./dist/voice-input/speech-session.js"
+    },
+    "./voice-input/voice-input.styles": {
+      "types": "./dist/voice-input/voice-input.styles.d.ts",
+      "default": "./dist/voice-input/voice-input.styles.js"
+    },
+    "./voice-input/voice-input": {
+      "types": "./dist/voice-input/voice-input.d.ts",
+      "default": "./dist/voice-input/voice-input.js"
+    },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    }
+  },
+  "description": "Chat messages, tools, composer and model picker built with Lit",
+  "sideEffects": [
+    "./dist/register.js",
+    "**/*.css"
+  ]
+}

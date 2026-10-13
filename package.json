@@ -1,0 +1,35 @@
+{
+  "name": "tacta",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/workspace",
+    "packages/chat"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "tsc -b packages/core packages/workspace packages/chat && node scripts/copy-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "check:architecture": "node scripts/check-architecture.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "vite examples --host 127.0.0.1",
+    "build:examples": "vite build examples",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "sync:maximus": "node scripts/sync-maximus.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.1",
+    "@vitest/browser-playwright": "5.0.3",
+    "playwright": "1.63.0",
+    "prettier": "3.9.9",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.2",
+    "vitest": "5.0.3"
+  }
+}

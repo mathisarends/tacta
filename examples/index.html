@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tacta — Workspace playground</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./main.ts"></script>
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">TACTA / COMPONENT PLAYGROUND</p>
+      <h1>One workspace. Your identity.</h1>
+      <p>
+        Drag a divider, or focus it and use Left, Right, Home and End. These examples use plain HTML
+        and DOM events.
+      </p>
+    </header>
+    <main>
+      <section class="demo" data-tacta-theme="dark">
+        <div class="title">
+          <h2>Panel splitter · dark theme</h2>
+          <output id="panel-width" aria-live="polite">320 px</output>
+        </div>
+        <div class="stage panel-stage">
+          <article class="content">
+            <p class="eyebrow">CONVERSATION AREA</p>
+            <h3>Compose your own layout</h3>
+            <p>The application owns the content, width and persistence.</p>
+          </article>
+          <tacta-panel-splitter
+            value="320"
+            reserve="250"
+            min-width="185"
+            label="Resize workspace panel"
+          ></tacta-panel-splitter>
+          <aside class="panel" style="width: 320px">
+            <p class="eyebrow">WORKSPACE AREA</p>
+            <h3>A reusable handle</h3>
+            <p>Shadow DOM protects component styles while CSS tokens carry your theme.</p>
+          </aside>
+        </div>
+      </section>
+      <section class="demo colorful" data-tacta-theme="light">
+        <div class="title">
+          <h2>Explorer splitter · custom light theme</h2>
+          <button id="restore" type="button" hidden>Show explorer</button>
+          <output id="explorer-width" aria-live="polite">260 px</output>
+        </div>
+        <div class="stage explorer-stage">
+          <article class="content">
+            <p class="eyebrow">DOCUMENT AREA</p>
+            <h3>A different visual identity</h3>
+            <p>
+              Double-click to reset. Drag below 140 px and release to collapse the explorer; the
+              application handles the collapse request.
+            </p>
+          </article>
+          <tacta-explorer-splitter
+            value="260"
+            label="Resize document explorer"
+          ></tacta-explorer-splitter>
+          <aside class="explorer" style="width: 260px" aria-label="Example files">
+            <p class="eyebrow">EXPLORER AREA</p>
+            <ul>
+              <li>README.md</li>
+              <li>packages/</li>
+              <li>examples/</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer>Lit inside. Standard Web Components outside.</footer>
+  </body>
+</html>
