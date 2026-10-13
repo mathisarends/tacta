@@ -19,7 +19,7 @@ Tacta is at `C:/code/tacta` (Git Bash: `/c/code/tacta`). The source is the Maxim
 | Icons, tooltips, menu positioning, keyboard helpers and styles        | Existing shared helpers                                                                       | `packages/core/src/`                   |
 | Sanitized markdown and lazy code highlighting                         | `shared/markdown/`                                                                            | `packages/chat/src/markdown/`          |
 
-The expanded library contains 37 registered Web Components. It compiles with strict TypeScript and
+The expanded library contains 39 registered Web Components. It compiles with strict TypeScript and
 has explicit ESM/declaration exports. Its package graph is `chat → core` and `workspace → core`.
 
 ## Application boundaries
@@ -39,20 +39,23 @@ has explicit ESM/declaration exports. Its package graph is `chat → core` and `
 - Registration is explicit. Class imports are side-effect free; registration functions let a host
   application define compatible subclasses before filling the remaining standard tags.
 
-## Integration checkpoints
+## Repository boundary
 
-The first workspace slice is already consumed by Maximus through local package archives. Its original
-tags and resize events are preserved by small adapters. The expanded chat/sidebar/tab adoption follows
-as a separate commit after the library checkpoint; final validation is recorded with that adoption.
+Maximus is only a read-only design and implementation reference. Its original tracked files have been
+restored, temporary adapters and package archives removed, and its working tree verified clean at
+`61cc725dbf5cef6374c203e61f5a9003dca6e36d`. No Maximus commit was created. Tacta contains no sync or
+application integration scripts. Consumers may install its independently built packages in their own
+projects; all authoring and validation for the library happen here.
 
-## Validation at the library checkpoint
+## Validation
 
 - Build and strict typecheck passed.
-- 32 Chromium component tests passed, covering resize/cancellation, slots, keyboard navigation,
+- 34 Chromium component tests passed, covering resize/cancellation, slots, keyboard navigation,
   message streaming, markdown sanitization, custom tool/provider presentation, model selection,
-  composer send/cancel/queue behavior, sidebar intent/rename and live translation.
-- The previous Maximus workspace integration passed its complete frontend suite: 146 files and
-  1,050 tests, plus build, lint, typechecking and formatting.
+  composer send/cancel/queue behavior, sidebar intent/rename, live translation and injected speech
+  recognition cleanup.
+- Original Maximus tests were used to understand the existing behavior. Maximus is not a library test
+  target and does not consume Tacta.
 
 ## Remaining candidates
 

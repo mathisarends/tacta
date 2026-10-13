@@ -130,17 +130,11 @@ Tool UI accepts a `presentCall` callback for application-specific titles and act
 model picker accepts `providerInfo` and `renderProviderIcon` callbacks for provider grouping and
 branding. Applications supply model lists; Tacta never loads them from an API.
 
-## Maximus integration
+## Source and independence
 
-Maximus consumes built package archives under `frontend/vendor/`. Refresh them from Tacta:
+The components are ported from existing Maximus UI implementations. Maximus is a **read-only design
+reference** and remains unchanged. All development, examples, tests and commits live in this repository.
+Tacta imports no Maximus or Vizron modules and contains no application integration scripts.
 
-```sh
-npm run sync:maximus -- C:/FH/FEP/maximus-trading/frontend
-```
-
-This builds and packs Tacta, then updates Maximus's manifest and lockfile with relative file
-dependencies. Maximus builds can run without a separate Tacta checkout. Commit the archives,
-manifest and lockfile together.
-
-See [the migration report](docs/migration-report.md) for extracted components, validation and
-application boundaries. MIT licensed.
+Use `npm run pack:packages` to build and package all three libraries. See [the migration report](docs/migration-report.md)
+for the extraction boundaries and validation. MIT licensed.

@@ -21,7 +21,7 @@
     "build:examples": "vite build examples",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "sync:maximus": "node scripts/sync-maximus.mjs"
+    "pack:packages": "npm run build && npm pack --workspaces"
   },
   "devDependencies": {
     "@types/node": "24.19.1",
