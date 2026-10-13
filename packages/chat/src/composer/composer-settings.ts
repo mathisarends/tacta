@@ -1,3 +1,4 @@
+import type { ProviderIconRenderer } from "./model-provider.js";
 import { modelProvider, providerIcon } from "./model-provider.js";
 import { css, html, nothing, type TemplateResult } from "lit";
 import { TactaElement as LitElement } from "@tacta/core/element";
@@ -40,7 +41,7 @@ function labelReasoning(effort: ReasoningEffort): string {
 
 export class ComposerSettings extends LitElement {
   @property({ attribute: false }) providerInfo = modelProvider;
-  @property({ attribute: false }) renderProviderIcon = providerIcon;
+  @property({ attribute: false }) renderProviderIcon: ProviderIconRenderer = providerIcon;
   @property({ type: Boolean }) disabled = false;
   @property({ attribute: false }) options: ComposerOptions = { ...defaultComposerOptions };
   @property({ attribute: false }) models: ChatModelOption[] = [];

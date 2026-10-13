@@ -258,6 +258,10 @@
     "./define": {
       "types": "./dist/define.d.ts",
       "default": "./dist/define.js"
+    },
+    "./events": {
+      "types": "./dist/events.d.ts",
+      "default": "./dist/events.js"
     }
   },
   "description": "Chat messages, tools, composer and model picker built with Lit",

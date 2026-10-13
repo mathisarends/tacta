@@ -40,3 +40,5 @@ export { ApprovalCard } from "./approval-card.js";
 export { VoiceInput } from "./voice-input/voice-input.js";
 export type { ChatNavigationEntry } from "./navigation-types.js";
 export type { ToolCallPresentation } from "./tool-calls/presenter.js";
+export type { ChatEventMap } from "./events.js";
+export type { ModelProvider, ProviderIconRenderer } from "./composer/model-provider.js";

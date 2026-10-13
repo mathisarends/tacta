@@ -1,3 +1,4 @@
+import type { ProviderIconRenderer } from "./model-provider.js";
 import { html, nothing, type PropertyValues, type TemplateResult } from "lit";
 import { TactaElement as LitElement } from "@tacta/core/element";
 import { property, state } from "lit/decorators.js";
@@ -28,7 +29,7 @@ function nextIndex(key: string, current: number, length: number): number {
 
 export class ModelMenu extends LitElement {
   @property({ attribute: false }) providerInfo = modelProvider;
-  @property({ attribute: false }) renderProviderIcon = providerIcon;
+  @property({ attribute: false }) renderProviderIcon: ProviderIconRenderer = providerIcon;
   @property({ attribute: false }) models: ChatModelOption[] = [];
   @property() value = "";
   @property({ type: Boolean }) disabled = false;

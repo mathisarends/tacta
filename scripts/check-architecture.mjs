@@ -44,7 +44,6 @@ function resolveModule(file, specifier) {
 for (const file of files) {
   const code = await readFile(file, "utf8");
   const source = ts.createSourceFile(file, code, ts.ScriptTarget.Latest, true);
-  const ownPackage = file.split(/[\\/]/).at(-3);
   function add(specifier) {
     if (/^@(api|app|features|shared|i18n|chat)(?:\/|$)/.test(specifier)) {
       throw new Error(`Application import ${specifier} in ${file}`);

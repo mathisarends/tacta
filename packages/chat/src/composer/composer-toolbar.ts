@@ -1,3 +1,4 @@
+import type { ProviderIconRenderer } from "./model-provider.js";
 import { modelProvider, providerIcon } from "./model-provider.js";
 import { css, html, nothing, type TemplateResult } from "lit";
 import { TactaElement as LitElement } from "@tacta/core/element";
@@ -16,7 +17,7 @@ import "./chat-send-button.js";
 
 export class ComposerToolbar extends LitElement {
   @property({ attribute: false }) providerInfo = modelProvider;
-  @property({ attribute: false }) renderProviderIcon = providerIcon;
+  @property({ attribute: false }) renderProviderIcon: ProviderIconRenderer = providerIcon;
   @property({ type: Boolean }) disabled = false;
   @property({ type: Boolean }) running = false;
   @property({ type: Boolean }) stopping = false;

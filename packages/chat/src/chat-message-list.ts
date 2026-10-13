@@ -18,7 +18,7 @@ export class ChatMessageList extends LitElement {
   @property() conversationId = "";
   @property({ attribute: false }) messages: Message[] = [];
   @property({ attribute: false }) presentCall = presentToolCall;
-  @property({ attribute: false }) workingIndicator?: () => TemplateResult;
+  @property({ attribute: false }) workingIndicator?: () => TemplateResult | Node;
   @property({ type: Boolean }) sending = false;
   @property({ type: Boolean }) hasMoreHistory = false;
   @property({ type: Boolean }) loadingHistory = false;

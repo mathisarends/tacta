@@ -22,3 +22,4 @@ export { ProfileMenu } from "./sidebar/profile-menu.js";
 export { RenameDialog } from "./sidebar/rename-dialog.js";
 export type { SidebarItem, SidebarRenameDetail } from "./sidebar/types.js";
 export type { NavigationEntry } from "./navigation-types.js";
+export type { WorkspaceEventMap } from "./events.js";

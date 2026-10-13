@@ -7,6 +7,8 @@ export interface ModelProvider {
   name: string;
 }
 
+export type ProviderIconRenderer = (provider: string, size?: number) => TemplateResult | Node;
+
 const providers: Record<string, ModelProvider> = {
   openai: { id: "openai", label: "OpenAI", name: "OpenAI" },
 };

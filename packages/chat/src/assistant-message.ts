@@ -19,7 +19,7 @@ function formatDuration(seconds: number): string {
 export class AssistantMessage extends LitElement {
   @property({ attribute: false }) message!: Message;
   @property({ attribute: false }) presentCall = presentToolCall;
-  @property({ attribute: false }) workingIndicator?: () => TemplateResult;
+  @property({ attribute: false }) workingIndicator?: () => TemplateResult | Node;
   @state() private now = Date.now();
   private clock: number | undefined;
 

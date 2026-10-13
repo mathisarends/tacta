@@ -10,6 +10,7 @@ import { voiceText } from "./messages/index.js";
 import { uiText } from "@tacta/core/messages";
 
 export class VoiceInput extends LitElement {
+  @property({ attribute: false }) recognitionFactory = speechConstructor;
   @property({ type: Boolean }) disabled = false;
   @property() context = "";
   @state() private speech: SpeechState = { phase: "idle", transcript: "", error: null };
@@ -82,7 +83,7 @@ export class VoiceInput extends LitElement {
   }
 
   private start(): void {
-    const Recognition = speechConstructor();
+    const Recognition = this.recognitionFactory();
     if (Recognition && !this.disabled) {
       this.session.start(Recognition, getLocale() === "de" ? "de-DE" : "en-US");
     }
@@ -130,7 +131,7 @@ export class VoiceInput extends LitElement {
   }
 
   private renderStart(): TemplateResult<1> {
-    const supported = Boolean(speechConstructor());
+    const supported = Boolean(this.recognitionFactory());
     const label = supported ? voiceText.start : voiceText.unsupported;
     return html`<button
       part="icon-button"

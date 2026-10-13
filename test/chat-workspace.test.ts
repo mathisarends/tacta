@@ -12,7 +12,9 @@ import type {
   ModelMenu,
   ToolCall,
   ToolCallList,
+  VoiceInput,
 } from "@tacta/chat";
+import type { BrowserSpeechRecognition } from "@tacta/chat/voice-input/speech-session";
 import type { SideBar, TactaSplitPane, WorkspaceTabBar } from "@tacta/workspace";
 import "@tacta/core/register";
 import "@tacta/chat/register";
@@ -364,4 +366,40 @@ it("selects slotted segmented panels with keyboard focus", async () => {
   expect(element.active).toBe("b");
   expect(query(element, "#panel-b").checkVisibility()).toBe(true);
   expect(query(element, "#panel-a").checkVisibility()).toBe(false);
+});
+
+it("supports an explicit speech boundary and disables unavailable recognition", async () => {
+  const element = await mount<VoiceInput>(
+    html`<tacta-voice-input .recognitionFactory=${() => undefined}></tacta-voice-input>`,
+    "tacta-voice-input",
+  );
+  expect(query<HTMLButtonElement>(element, "button").disabled).toBe(true);
+});
+
+it("aborts injected speech recognition when the voice component disconnects", async () => {
+  class Recognition implements BrowserSpeechRecognition {
+    static current: Recognition;
+    lang = "";
+    continuous = false;
+    interimResults = false;
+    onstart: BrowserSpeechRecognition["onstart"] = null;
+    onresult: BrowserSpeechRecognition["onresult"] = null;
+    onerror: BrowserSpeechRecognition["onerror"] = null;
+    onend: BrowserSpeechRecognition["onend"] = null;
+    start = vi.fn();
+    stop = vi.fn();
+    abort = vi.fn();
+    constructor() {
+      Recognition.current = this;
+    }
+  }
+  const element = await mount<VoiceInput>(
+    html`<tacta-voice-input .recognitionFactory=${() => Recognition}></tacta-voice-input>`,
+    "tacta-voice-input",
+  );
+  query<HTMLButtonElement>(element, "button").click();
+  expect(Recognition.current.lang).toBe("en-US");
+  element.remove();
+  expect(Recognition.current.abort).toHaveBeenCalledOnce();
+  expect(Recognition.current.onresult).toBeNull();
 });

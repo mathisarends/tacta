@@ -139,6 +139,10 @@
     "./split-pane": {
       "types": "./dist/split-pane.d.ts",
       "default": "./dist/split-pane.js"
+    },
+    "./events": {
+      "types": "./dist/events.d.ts",
+      "default": "./dist/events.js"
     }
   },
   "dependencies": {
