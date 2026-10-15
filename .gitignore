@@ -4,6 +4,7 @@ coverage/
 test-results/
 .vitest/
 .cache/
+debug.log
 *.tsbuildinfo
 *.tgz
 packages/*/LICENSE

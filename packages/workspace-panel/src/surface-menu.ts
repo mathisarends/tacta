@@ -9,9 +9,12 @@ import { tooltip } from "@tacta/core/tooltip";
 import { panelText } from "./messages/index.js";
 import type { PickerClose, SurfacePicker } from "./surface-picker.js";
 import "./surface-picker.js";
+import { defaultSurfaceDefinitions, type SurfaceDefinition } from "./surfaces.js";
 
 export class SurfaceMenu extends LitElement {
   @property({ attribute: false }) opened: string[] = [];
+  @property({ attribute: false }) surfaces: readonly SurfaceDefinition[] =
+    defaultSurfaceDefinitions;
   @state() private open = false;
   @query(".add-tab", true) private trigger!: HTMLButtonElement;
   @query(".tacta-surface-menu", true) private menu!: HTMLElement;
@@ -101,6 +104,7 @@ export class SurfaceMenu extends LitElement {
       >
         <tacta-surface-picker
           menu
+          .surfaces=${this.surfaces}
           .opened=${this.opened}
           @picker-close=${this.onPickerClose}
         ></tacta-surface-picker>

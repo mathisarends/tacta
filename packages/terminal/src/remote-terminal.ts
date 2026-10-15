@@ -1,7 +1,7 @@
 import { TactaElement as LitElement } from "@tacta/core/element";
 import { css, html, nothing, unsafeCSS, type PropertyValues, type TemplateResult } from "lit";
 import { property, query, state } from "lit/decorators.js";
-import type { Terminal } from "@xterm/xterm";
+import type { Terminal, ITerminalOptions } from "@xterm/xterm";
 import { FitAddon } from "@xterm/addon-fit";
 import { SearchAddon, type ISearchOptions } from "@xterm/addon-search";
 import { Unicode11Addon } from "@xterm/addon-unicode11";
@@ -22,6 +22,7 @@ export class RemoteTerminal extends LitElement {
   @property({ type: Boolean }) active = true;
   @property() sessionId = "";
   @property({ attribute: false }) connector?: TerminalConnector;
+  @property({ attribute: false }) options: ITerminalOptions = {};
   @property({ type: Boolean }) canInterrupt = false;
   @state() private searching = false;
   @state() private findResults: FindResults | null = null;
@@ -46,6 +47,7 @@ export class RemoteTerminal extends LitElement {
   private initialFocus: Element | null = null;
   private pointerType = "";
   private started = false;
+  private mountGeneration = 0;
 
   private get focusedElement(): Element | null {
     let focused = this.ownerDocument.activeElement;
@@ -111,6 +113,7 @@ export class RemoteTerminal extends LitElement {
   }
 
   override disconnectedCallback(): void {
+    ++this.mountGeneration;
     super.disconnectedCallback();
     this.observer?.disconnect();
     this.terminal?.dispose();
@@ -118,14 +121,16 @@ export class RemoteTerminal extends LitElement {
   }
 
   private async mountTerminal(): Promise<void> {
+    const generation = ++this.mountGeneration;
     const initialFocus = this.focusedElement;
     const container = this.renderRoot.querySelector<HTMLElement>(".viewport")!;
     const style = getComputedStyle(this);
     const fontFamily = await loadFontFamily(style);
-    if (!this.isConnected) {
+    if (!this.isConnected || generation !== this.mountGeneration) {
       return;
     }
     this.terminal = createTerminal(style, fontFamily);
+    this.terminal.options = { ...this.options, allowProposedApi: true, disableStdin: true };
     this.fit = new FitAddon();
     this.terminal.loadAddon(this.fit);
     this.search = new SearchAddon();
@@ -147,7 +152,7 @@ export class RemoteTerminal extends LitElement {
     this.observer = new ResizeObserver(() => this.resize());
     this.observer.observe(container);
     await document.fonts.ready;
-    if (this.isConnected) {
+    if (this.isConnected && generation === this.mountGeneration) {
       this.resize();
       if (this.active) {
         this.connect(initialFocus);
@@ -200,6 +205,21 @@ export class RemoteTerminal extends LitElement {
       return;
     }
     this.fit?.fit();
+  }
+
+  /** Refresh computed theme colors after a host changes its CSS token scope. */
+  refreshTheme(): void {
+    if (!this.terminal) {
+      return;
+    }
+    const style = getComputedStyle(this);
+    this.terminal.options.theme = {
+      background: style.getPropertyValue("--tacta-color-background").trim() || "#181818",
+      foreground: style.getPropertyValue("--tacta-color-text").trim() || "#e6e6e6",
+      cursor: style.getPropertyValue("--tacta-color-accent").trim() || "#ffffff",
+      selectionBackground: style.getPropertyValue("--tacta-color-selection").trim() || "#444444",
+      ...this.options.theme,
+    };
   }
 
   private handleKey(event: KeyboardEvent): boolean {

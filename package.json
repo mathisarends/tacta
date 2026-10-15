@@ -17,13 +17,18 @@
     "packages/image-editor",
     "packages/file-preview",
     "packages/code-diff",
-    "packages/markdown-document"
+    "packages/markdown-document",
+    "packages/controls",
+    "packages/search",
+    "packages/notifications",
+    "packages/file-explorer",
+    "packages/settings"
   ],
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
-    "build": "tsc -b packages/core packages/workspace-panel packages/sidebar packages/workspace packages/question packages/voice-input packages/markdown packages/chat packages/terminal packages/browser packages/image-editor packages/file-preview packages/code-diff packages/markdown-document && node scripts/copy-assets.mjs",
+    "build": "tsc -b packages/core packages/workspace-panel packages/sidebar packages/workspace packages/question packages/voice-input packages/markdown packages/chat packages/terminal packages/browser packages/image-editor packages/file-preview packages/code-diff packages/markdown-document packages/controls packages/search packages/notifications packages/file-explorer packages/settings && node scripts/copy-assets.mjs",
     "typecheck": "tsc --noEmit",
     "check:architecture": "node scripts/check-architecture.mjs",
     "test": "vitest run",
@@ -32,7 +37,9 @@
     "build:examples": "vite build examples",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "pack:packages": "npm run build && npm pack --workspaces"
+    "pack:packages": "npm run build && npm pack --workspaces",
+    "docs:media": "npm run build && node scripts/capture-media.mjs",
+    "check:packages": "node scripts/check-packages.mjs"
   },
   "devDependencies": {
     "@types/node": "24.19.1",

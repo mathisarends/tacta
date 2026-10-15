@@ -309,7 +309,7 @@ export class ImageCanvas extends LitElement {
       draft,
       html`<tacta-image-text-input
         class="text-input"
-        style="--tacta-annotation-x:${x}%;--annotation-y:${y}%;--annotation-size:${size}px;--annotation-color:${draft.color}"
+        style="--tacta-annotation-x:${x}%;--tacta-annotation-y:${y}%;--tacta-annotation-size:${size}px;--tacta-annotation-color:${draft.color}"
         @text-finish=${this.onTextFinish}
       ></tacta-image-text-input>`,
     )}`;

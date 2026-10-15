@@ -58,8 +58,8 @@ export const previewStyles = [
       background: var(--tacta-color-sidebar, #1e1f20);
     }
     .paper {
-      --preview-paper: var(--tacta-color-paper, #ffffff);
-      --preview-ink: var(--tacta-color-on-paper, #202124);
+      --tacta-preview-paper: var(--tacta-color-paper, #ffffff);
+      --tacta-preview-ink: var(--tacta-color-on-paper, #202124);
     }
     button:disabled {
       opacity: 0.4;

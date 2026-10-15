@@ -1,3 +1,4 @@
+export const locales = ["de", "en"] as const;
 export type Locale = "de" | "en";
 let locale: Locale = "en";
 const listeners = new Set<() => void>();

@@ -11,3 +11,4 @@ export * from "./workspace-tab-bar.js";
 export * from "./workspace-tab.js";
 export * from "./workspace-tabs.styles.js";
 export * from "./events.js";
+export { panelText } from "./messages/index.js";

@@ -122,7 +122,7 @@ export class PdfPreview extends LitElement {
       const paper = this.renderRoot.querySelector<HTMLElement>(".page")!;
       paper.style.width = `${dimensions.width}px`;
       paper.style.height = `${dimensions.height}px`;
-      paper.style.setProperty("--tacta-total-scale-factor", String(scale));
+      paper.style.setProperty("--total-scale-factor", String(scale));
       paper.replaceChildren(canvas);
       this.rendering = page.render({
         canvas,

@@ -30,7 +30,17 @@
       "@tacta/code-diff": ["./packages/code-diff/src/index.ts"],
       "@tacta/code-diff/*": ["./packages/code-diff/src/*"],
       "@tacta/markdown-document": ["./packages/markdown-document/src/index.ts"],
-      "@tacta/markdown-document/*": ["./packages/markdown-document/src/*"]
+      "@tacta/markdown-document/*": ["./packages/markdown-document/src/*"],
+      "@tacta/controls": ["./packages/controls/src/index.ts"],
+      "@tacta/controls/*": ["./packages/controls/src/*"],
+      "@tacta/search": ["./packages/search/src/index.ts"],
+      "@tacta/search/*": ["./packages/search/src/*"],
+      "@tacta/notifications": ["./packages/notifications/src/index.ts"],
+      "@tacta/notifications/*": ["./packages/notifications/src/*"],
+      "@tacta/file-explorer": ["./packages/file-explorer/src/index.ts"],
+      "@tacta/file-explorer/*": ["./packages/file-explorer/src/*"],
+      "@tacta/settings": ["./packages/settings/src/index.ts"],
+      "@tacta/settings/*": ["./packages/settings/src/*"]
     },
     "types": ["node", "vite/client"]
   },

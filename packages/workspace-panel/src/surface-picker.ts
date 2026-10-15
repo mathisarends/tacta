@@ -5,13 +5,22 @@ import { isRovingKey, rovingIndex } from "@tacta/core/keyboard/roving";
 import { icon } from "@tacta/core/icons";
 import { panelText } from "./messages/index.js";
 import { surfacePickerStyles } from "./surface-picker.styles.js";
-import { surfaceForKey, surfaceIcons, surfaceKey, surfaces, type Surface } from "./surfaces.js";
+import {
+  surfaceForKey,
+  surfaceIcons,
+  surfaceKey,
+  defaultSurfaceDefinitions,
+  type Surface,
+  type SurfaceDefinition,
+} from "./surfaces.js";
 
 export type PickerClose = { restoreFocus: boolean };
 
 export class SurfacePicker extends LitElement {
   @property({ type: Boolean, reflect: true }) menu = false;
   @property({ attribute: false }) opened: string[] = [];
+  @property({ attribute: false }) surfaces: readonly SurfaceDefinition[] =
+    defaultSurfaceDefinitions;
 
   private get options(): HTMLButtonElement[] {
     return [...this.renderRoot.querySelectorAll<HTMLButtonElement>(".surface-option")];
@@ -69,7 +78,7 @@ export class SurfacePicker extends LitElement {
     if (event.ctrlKey || event.metaKey || event.altKey) {
       return;
     }
-    const surface = surfaceForKey(event.key);
+    const surface = surfaceForKey(event.key, this.surfaces);
     if (surface) {
       event.preventDefault();
       this.open(surface);
@@ -85,7 +94,9 @@ export class SurfacePicker extends LitElement {
     return icon("check", 13);
   }
 
-  private renderOption(surface: Surface): TemplateResult<1> {
+  private renderOption(definition: SurfaceDefinition): TemplateResult<1> {
+    const surface = definition.id;
+    const labels = panelText.surfaces as Record<string, string>;
     return html`<button
       part="surface-option"
       class="surface-option menu-option"
@@ -93,14 +104,16 @@ export class SurfacePicker extends LitElement {
       tabindex=${this.menu ? "-1" : "0"}
       @click=${() => this.open(surface)}
     >
-      ${icon(surfaceIcons[surface], 16)}<span>${panelText.surfaces[surface]}</span>
+      ${icon(definition.icon ?? surfaceIcons[surface] ?? "file", 16)}<span
+        >${definition.label ?? labels[surface] ?? surface}</span
+      >
       ${this.renderCheck(surface)}
-      <kbd>${surfaceKey(surface)}</kbd>
+      <kbd>${surfaceKey(surface, this.surfaces)}</kbd>
     </button>`;
   }
 
   override render(): TemplateResult<1> {
-    const options = surfaces.map((surface) => this.renderOption(surface));
+    const options = this.surfaces.map((surface) => this.renderOption(surface));
     if (this.menu) {
       return html`${options}`;
     }

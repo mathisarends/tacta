@@ -6,6 +6,7 @@ import { icon } from "@tacta/core/icons";
 import { uiText } from "@tacta/core/messages";
 import { tooltip } from "@tacta/core/tooltip";
 import { surfaceIcons, type Surface } from "./surfaces.js";
+import type { IconName } from "@tacta/core/icons";
 import { workspaceTabStyles } from "./workspace-tabs.styles.js";
 
 export interface WorkspaceTabData {
@@ -14,6 +15,7 @@ export interface WorkspaceTabData {
   surface: Surface;
   url: string;
   favicon: string;
+  icon?: IconName;
 }
 
 export class WorkspaceTab extends LitElement {
@@ -43,7 +45,7 @@ export class WorkspaceTab extends LitElement {
 
   private renderIcon(): TemplateResult {
     if (!this.tab.favicon) {
-      return icon(surfaceIcons[this.tab.surface], 16);
+      return icon(this.tab.icon ?? surfaceIcons[this.tab.surface] ?? "file", 16);
     }
     return html`<img
       class="tab-favicon"

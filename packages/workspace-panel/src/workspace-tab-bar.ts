@@ -11,7 +11,7 @@ import { tooltip } from "@tacta/core/tooltip";
 import { panelText } from "./messages/index.js";
 import type { SurfaceMenu } from "./surface-menu.js";
 import "./surface-menu.js";
-import type { Surface } from "./surfaces.js";
+import { defaultSurfaceDefinitions, type Surface, type SurfaceDefinition } from "./surfaces.js";
 import { TabDragController } from "./tab-drag-controller.js";
 import type { WorkspaceTabData } from "./workspace-tab.js";
 import "./workspace-tab.js";
@@ -24,6 +24,8 @@ export class WorkspaceTabBar extends LitElement {
     Record<"toggleSidebar" | "toggleWorkspace" | "toggleWorkspaceMaximize", Shortcut>
   > = {};
   @property({ attribute: false }) tabs: WorkspaceTabData[] = [];
+  @property({ attribute: false }) surfaces: readonly SurfaceDefinition[] =
+    defaultSurfaceDefinitions;
   @property({ attribute: false }) active: string | null = null;
   @property({ attribute: false }) panelFor: (id: string) => HTMLElement | null = () => null;
   @property({ attribute: false }) addSurface?: Surface;
@@ -236,6 +238,7 @@ export class WorkspaceTabBar extends LitElement {
       </button>`;
     }
     return html`<tacta-surface-menu
+      .surfaces=${this.surfaces}
       ?hidden=${!this.tabs.length}
       .opened=${this.ids}
     ></tacta-surface-menu>`;

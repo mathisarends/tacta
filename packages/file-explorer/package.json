@@ -1,0 +1,134 @@
+{
+  "name": "@tacta/file-explorer",
+  "version": "0.1.0",
+  "description": "Composable file-explorer Web Components for Tacta",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/register.js",
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathisarends/tacta.git",
+    "directory": "packages/file-explorer"
+  },
+  "dependencies": {
+    "@tacta/core": "0.1.0",
+    "lit": "^3.3.3",
+    "@tacta/workspace-panel": "0.1.0",
+    "@iconify-icons/vscode-icons": "^2.0.13"
+  },
+  "exports": {
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    },
+    "./file-size": {
+      "types": "./dist/file-size.d.ts",
+      "default": "./dist/file-size.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./tree.styles": {
+      "types": "./dist/tree.styles.d.ts",
+      "default": "./dist/tree.styles.js"
+    },
+    "./components/document-explorer-skeleton": {
+      "types": "./dist/components/document-explorer-skeleton.d.ts",
+      "default": "./dist/components/document-explorer-skeleton.js"
+    },
+    "./components/document-explorer": {
+      "types": "./dist/components/document-explorer.d.ts",
+      "default": "./dist/components/document-explorer.js"
+    },
+    "./components/document-skeleton": {
+      "types": "./dist/components/document-skeleton.d.ts",
+      "default": "./dist/components/document-skeleton.js"
+    },
+    "./components/document-tab": {
+      "types": "./dist/components/document-tab.d.ts",
+      "default": "./dist/components/document-tab.js"
+    },
+    "./components/document-tabs": {
+      "types": "./dist/components/document-tabs.d.ts",
+      "default": "./dist/components/document-tabs.js"
+    },
+    "./components/explorer-file-row": {
+      "types": "./dist/components/explorer-file-row.d.ts",
+      "default": "./dist/components/explorer-file-row.js"
+    },
+    "./components/explorer-folder-row": {
+      "types": "./dist/components/explorer-folder-row.d.ts",
+      "default": "./dist/components/explorer-folder-row.js"
+    },
+    "./components/explorer-row.styles": {
+      "types": "./dist/components/explorer-row.styles.d.ts",
+      "default": "./dist/components/explorer-row.styles.js"
+    },
+    "./components/file-document-toolbar": {
+      "types": "./dist/components/file-document-toolbar.d.ts",
+      "default": "./dist/components/file-document-toolbar.js"
+    },
+    "./components/file-icon": {
+      "types": "./dist/components/file-icon.d.ts",
+      "default": "./dist/components/file-icon.js"
+    },
+    "./components/path-picker": {
+      "types": "./dist/components/path-picker.d.ts",
+      "default": "./dist/components/path-picker.js"
+    },
+    "./components/workspace-breadcrumb": {
+      "types": "./dist/components/workspace-breadcrumb.d.ts",
+      "default": "./dist/components/workspace-breadcrumb.js"
+    },
+    "./data/explorer-tree": {
+      "types": "./dist/data/explorer-tree.d.ts",
+      "default": "./dist/data/explorer-tree.js"
+    },
+    "./data/workspace-types": {
+      "types": "./dist/data/workspace-types.d.ts",
+      "default": "./dist/data/workspace-types.js"
+    },
+    "./messages/de": {
+      "types": "./dist/messages/de.d.ts",
+      "default": "./dist/messages/de.js"
+    },
+    "./messages/en": {
+      "types": "./dist/messages/en.d.ts",
+      "default": "./dist/messages/en.js"
+    },
+    "./messages": {
+      "types": "./dist/messages/index.d.ts",
+      "default": "./dist/messages/index.js"
+    },
+    "./index": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./components/document-workspace": {
+      "types": "./dist/components/document-workspace.d.ts",
+      "default": "./dist/components/document-workspace.js"
+    },
+    "./data/random": {
+      "types": "./dist/data/random.d.ts",
+      "default": "./dist/data/random.js"
+    },
+    "./messages/index": {
+      "types": "./dist/messages/index.d.ts",
+      "default": "./dist/messages/index.js"
+    }
+  }
+}

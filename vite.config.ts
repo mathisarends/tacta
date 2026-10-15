@@ -3,6 +3,16 @@ import { fileURLToPath } from "node:url";
 export default defineConfig({
   resolve: {
     alias: {
+      "@tacta/settings": fileURLToPath(new URL("./packages/settings/src", import.meta.url)),
+      "@tacta/controls": fileURLToPath(new URL("./packages/controls/src", import.meta.url)),
+      "@tacta/search": fileURLToPath(new URL("./packages/search/src", import.meta.url)),
+      "@tacta/notifications": fileURLToPath(
+        new URL("./packages/notifications/src", import.meta.url),
+      ),
+      "@tacta/file-explorer": fileURLToPath(
+        new URL("./packages/file-explorer/src", import.meta.url),
+      ),
+
       "@tacta/core": fileURLToPath(new URL("./packages/core/src", import.meta.url)),
       "@tacta/workspace-panel": fileURLToPath(
         new URL("./packages/workspace-panel/src", import.meta.url),

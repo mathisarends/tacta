@@ -1,0 +1,108 @@
+{
+  "name": "@tacta/controls",
+  "version": "0.1.0",
+  "description": "Composable controls Web Components for Tacta",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/register.js",
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathisarends/tacta.git",
+    "directory": "packages/controls"
+  },
+  "dependencies": {
+    "@tacta/core": "0.1.0",
+    "lit": "^3.3.3"
+  },
+  "exports": {
+    "./cta-button": {
+      "types": "./dist/cta-button.d.ts",
+      "default": "./dist/cta-button.js"
+    },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./key-chord": {
+      "types": "./dist/key-chord.d.ts",
+      "default": "./dist/key-chord.js"
+    },
+    "./locale-switch": {
+      "types": "./dist/locale-switch.d.ts",
+      "default": "./dist/locale-switch.js"
+    },
+    "./page-title": {
+      "types": "./dist/page-title.d.ts",
+      "default": "./dist/page-title.js"
+    },
+    "./password-input": {
+      "types": "./dist/password-input.d.ts",
+      "default": "./dist/password-input.js"
+    },
+    "./pill-tabs.styles": {
+      "types": "./dist/pill-tabs.styles.d.ts",
+      "default": "./dist/pill-tabs.styles.js"
+    },
+    "./pill-tabs": {
+      "types": "./dist/pill-tabs.d.ts",
+      "default": "./dist/pill-tabs.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./save-indicator": {
+      "types": "./dist/save-indicator.d.ts",
+      "default": "./dist/save-indicator.js"
+    },
+    "./social-login-button": {
+      "types": "./dist/social-login-button.d.ts",
+      "default": "./dist/social-login-button.js"
+    },
+    "./text-input": {
+      "types": "./dist/text-input.d.ts",
+      "default": "./dist/text-input.js"
+    },
+    "./breadcrumb/app-breadcrumb": {
+      "types": "./dist/breadcrumb/app-breadcrumb.d.ts",
+      "default": "./dist/breadcrumb/app-breadcrumb.js"
+    },
+    "./checkbox/app-checkbox.styles": {
+      "types": "./dist/checkbox/app-checkbox.styles.d.ts",
+      "default": "./dist/checkbox/app-checkbox.styles.js"
+    },
+    "./checkbox/app-checkbox": {
+      "types": "./dist/checkbox/app-checkbox.d.ts",
+      "default": "./dist/checkbox/app-checkbox.js"
+    },
+    "./select/app-select.styles": {
+      "types": "./dist/select/app-select.styles.d.ts",
+      "default": "./dist/select/app-select.styles.js"
+    },
+    "./select/app-select": {
+      "types": "./dist/select/app-select.d.ts",
+      "default": "./dist/select/app-select.js"
+    },
+    "./settings/settings-row": {
+      "types": "./dist/settings/settings-row.d.ts",
+      "default": "./dist/settings/settings-row.js"
+    },
+    "./settings/settings-section": {
+      "types": "./dist/settings/settings-section.d.ts",
+      "default": "./dist/settings/settings-section.js"
+    }
+  }
+}
