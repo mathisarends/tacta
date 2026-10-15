@@ -1,0 +1,68 @@
+{
+  "name": "@tacta/code-diff",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "Tacta code-diff extension: composable Lit Web Components",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/register.js",
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathisarends/tacta.git",
+    "directory": "packages/code-diff"
+  },
+  "dependencies": {
+    "@tacta/core": "0.1.0",
+    "lit": "^3.3.3",
+    "@tacta/markdown": "0.1.0",
+    "@codemirror/language": "^6.13.1",
+    "@codemirror/language-data": "^6.5.2",
+    "@lezer/highlight": "^1.2.5"
+  },
+  "exports": {
+    "./code-diff": {
+      "types": "./dist/code-diff.d.ts",
+      "default": "./dist/code-diff.js"
+    },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    },
+    "./diff-syntax-controller": {
+      "types": "./dist/diff-syntax-controller.d.ts",
+      "default": "./dist/diff-syntax-controller.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./messages/de": {
+      "types": "./dist/messages/de.d.ts",
+      "default": "./dist/messages/de.js"
+    },
+    "./messages/en": {
+      "types": "./dist/messages/en.d.ts",
+      "default": "./dist/messages/en.js"
+    },
+    "./messages": {
+      "types": "./dist/messages/index.d.ts",
+      "default": "./dist/messages/index.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    }
+  }
+}

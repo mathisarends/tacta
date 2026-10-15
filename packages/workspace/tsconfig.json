@@ -9,6 +9,16 @@
     "rootDir": "src",
     "outDir": "dist"
   },
-  "references": [{ "path": "../core" }],
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../workspace-panel"
+    },
+    {
+      "path": "../sidebar"
+    }
+  ],
   "include": ["src/**/*.ts"]
 }

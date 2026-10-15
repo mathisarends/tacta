@@ -1,1 +1,1 @@
-export { VoiceInput } from "./voice-input.js";
+export * from "@tacta/voice-input/voice-input";

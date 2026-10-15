@@ -1,0 +1,25 @@
+import type { de } from "./de.js";
+
+export const en: typeof de = {
+  title: "Conversations",
+  newChat: "New conversation",
+  search: "Search",
+  accountMenu: "Open account menu",
+  signOut: "Sign out",
+  collapse: "Collapse sidebar",
+  expand: "Toggle sidebar",
+  pinned: "Pinned",
+  recent: "Recent",
+  unread: "Unread",
+  generatingTitle: "Generating title…",
+  replying: "Replying",
+  conversationActions: "Conversation actions",
+  pin: "Pin",
+  unpin: "Unpin",
+  rename: "Rename",
+  renameConversation: "Rename chat",
+  renamePrompt: "Use a short, memorable name",
+  delete: "Delete",
+  loadMore: "Load more chats",
+  loading: "Loading…",
+};

@@ -1,7 +1,7 @@
 import type { ProviderIconRenderer } from "./model-provider.js";
 import { modelProvider, providerIcon } from "./model-provider.js";
-import { html, nothing, type PropertyValues, type TemplateResult } from "lit";
 import { TactaElement as LitElement } from "@tacta/core/element";
+import { html, nothing, type PropertyValues, type TemplateResult } from "lit";
 import { property, state } from "lit/decorators.js";
 import { chatComposerStyles } from "./chat-composer.styles.js";
 import type { PendingApproval } from "../types.js";
@@ -14,6 +14,7 @@ import {
   type ComposerDraft,
 } from "./composer-draft.js";
 import type { ComposerInput } from "./composer-input.js";
+import { expandCommand, selectedCommand, type ComposerCommand } from "./composer-commands.js";
 import "./composer-input.js";
 import "./composer-toolbar.js";
 import "./composer-attachments.js";
@@ -39,6 +40,7 @@ export class ChatComposer extends LitElement {
   @property({ attribute: false }) providerInfo = modelProvider;
   @property({ attribute: false }) renderProviderIcon: ProviderIconRenderer = providerIcon;
   @property({ type: Boolean }) disabled = false;
+  @property({ attribute: false }) optionsDisabled: boolean | undefined;
   @property({ type: Boolean }) running = false;
   @property({ type: Boolean }) stopping = false;
   @property({ type: Boolean }) stopDisabled = false;
@@ -52,10 +54,15 @@ export class ChatComposer extends LitElement {
   @property({ attribute: false }) uploadingAttachments: File[] = [];
   @property() context = "";
   @property({ attribute: false }) question: ComposerQuestionData | null = null;
+  @property({ attribute: false }) commands: ComposerCommand[] = [];
+  @property({ type: Boolean }) commandsLoading = false;
+  @property() commandsError = "";
+  @property({ type: Boolean }) commandsBelow = false;
   @state() private questionPreview = false;
   @state() private questionNotice = "";
   @state() private dictating = false;
   @state() private interim = "";
+  private focusPending = false;
 
   private get draft(): ComposerDraft {
     return {
@@ -79,7 +86,11 @@ export class ChatComposer extends LitElement {
   }
 
   private get sendDisabled(): boolean {
-    return !canSendMessage(this.draft) || (this.running && this.attachments.length > 0);
+    return (
+      !canSendMessage(this.draft) ||
+      (this.running && this.attachments.length > 0) ||
+      (this.commandsLoading && this.value.startsWith("/"))
+    );
   }
 
   private get dropzoneDisabled(): boolean {
@@ -98,12 +109,28 @@ export class ChatComposer extends LitElement {
     }
   }
 
+  protected override updated(): void {
+    if (this.focusPending && !this.disabled) {
+      void this.focusInput();
+    }
+  }
+
+  override disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.focusPending = false;
+  }
+
   async focusInput(): Promise<void> {
     await this.updateComplete;
     await this.input?.updateComplete;
-    if (this.isConnected) {
-      this.input?.focus();
+    if (!this.isConnected) {
+      return;
     }
+    this.focusPending = this.disabled;
+    if (this.focusPending) {
+      return;
+    }
+    this.input?.focus();
   }
 
   insertText(text: string): boolean {
@@ -176,6 +203,13 @@ export class ChatComposer extends LitElement {
   }
 
   private send(): void {
+    if (this.sendDisabled) {
+      return;
+    }
+    if (selectedCommand(this.value, this.commands)?.kind === "manage") {
+      this.dispatchEvent(new CustomEvent("manage-templates", { bubbles: true, composed: true }));
+      return;
+    }
     if (this.running) {
       this.enqueue();
       return;
@@ -184,6 +218,7 @@ export class ChatComposer extends LitElement {
     if (!message) {
       return;
     }
+    message.text = expandCommand(message.text, this.commands);
     const accepted = this.dispatchEvent(
       new CustomEvent<ComposerMessage>("send-message", {
         detail: message,
@@ -207,12 +242,13 @@ export class ChatComposer extends LitElement {
     if (!message || message.attachments.length) {
       return;
     }
+    message.text = expandCommand(message.text, this.commands);
     this.dispatchEvent(
       new CustomEvent<ComposerMessage>("queue-message", {
         detail: message,
+        cancelable: true,
         bubbles: true,
         composed: true,
-        cancelable: true,
       }),
     );
   }
@@ -258,7 +294,7 @@ export class ChatComposer extends LitElement {
     if (!this.approvals.length) {
       return nothing;
     }
-    return html`<div part="approval-dock" class="approval-dock">
+    return html`<div class="approval-dock">
       ${repeat(
         this.approvals,
         (approval) => approval.id,
@@ -270,7 +306,7 @@ export class ChatComposer extends LitElement {
 
   override render(): TemplateResult<1> {
     return html`${this.renderQueue()} ${this.renderQuestion()}
-      <div part="question-notice" class="question-notice" role="status">${this.questionNotice}</div>
+      <div class="question-notice" role="status">${this.questionNotice}</div>
       <div class=${this.approvals.length ? "composer-shell reviewing" : "composer-shell"}>
         ${this.renderApprovals()}
         <tacta-composer-dropzone
@@ -286,6 +322,10 @@ export class ChatComposer extends LitElement {
             @remove-file=${(event: CustomEvent<File>) => this.removeFile(event.detail)}
           ></tacta-composer-attachments>
           <tacta-composer-input
+            .commandsBelow=${this.commandsBelow}
+            .commands=${this.commands}
+            .commandsLoading=${this.commandsLoading}
+            .commandsError=${this.commandsError}
             .disabled=${this.disabled}
             .readOnly=${this.dictating}
             .value=${this.inputValue}
@@ -295,6 +335,7 @@ export class ChatComposer extends LitElement {
             .providerInfo=${this.providerInfo}
             .renderProviderIcon=${this.renderProviderIcon}
             @menu-action=${this.openQuestionPreview}
+            .optionsDisabled=${this.optionsDisabled}
             .models=${this.models}
             .defaultApprovalMode=${this.defaultApprovalMode}
             .options=${this.options}

@@ -261,3 +261,60 @@
   --tacta-color-qr-ink: #0b0b0b;
   --tacta-color-qr-paper: #ffffff;
 }
+
+:root,
+[data-tacta-theme] {
+  --tacta-color-image-text-input: color-mix(
+    in srgb,
+    var(--tacta-color-image-editor-background) 45%,
+    transparent
+  );
+  --tacta-font-image-annotation: sans-serif;
+  --tacta-line-height-image-annotation: 1.2;
+  --tacta-image-editor-text-width: 280px;
+  --tacta-image-editor-text-outline-offset: -1px;
+  --tacta-color-image-editor-background: #121212;
+  --tacta-image-editor-actions-padding: 12px;
+  --tacta-image-editor-ink: #ef4444;
+  --tacta-image-editor-color-red: #ef4444;
+  --tacta-image-editor-color-orange: #f97316;
+  --tacta-image-editor-color-yellow: #facc15;
+  --tacta-image-editor-color-green: #22c55e;
+  --tacta-image-editor-color-blue: #3b82f6;
+  --tacta-image-editor-color-purple: #a855f7;
+  --tacta-image-editor-color-white: #ffffff;
+  --tacta-image-editor-color-black: #000000;
+  --tacta-image-editor-toolbar-padding: 10px;
+  --tacta-image-editor-handle-gap: 10px;
+  --tacta-image-editor-handle-width: 26px;
+  --tacta-image-editor-color-chip: 24px;
+  --tacta-image-editor-palette-width: 232px;
+  --tacta-image-editor-palette-padding: 12px;
+  --tacta-image-editor-gap: 6px;
+  --tacta-image-editor-inset: 20px;
+  --tacta-image-editor-footer: 76px;
+  --tacta-image-editor-control: 34px;
+  --tacta-image-editor-range: 64px;
+  --tacta-color-icon-tile: #141414;
+  --tacta-color-activity: var(--tacta-color-positive);
+  --tacta-color-diff-added: #56c790;
+  --tacta-color-diff-removed: #ef7777;
+  --tacta-color-diff-added-surface: color-mix(
+    in srgb,
+    var(--tacta-color-diff-added) 13%,
+    transparent
+  );
+  --tacta-color-diff-removed-surface: color-mix(
+    in srgb,
+    var(--tacta-color-diff-removed) 13%,
+    transparent
+  );
+  --tacta-line-height-code: 1.6;
+  --tacta-font-sans: "Segoe UI Variable Text", "Segoe UI", "Geist Variable", sans-serif;
+  --tacta-changes-icon-tile-size: 48px;
+  --tacta-settings-form-gap: 12px;
+  --tacta-settings-action-gap: 8px;
+  --tacta-workspace-tab-icon-size: 16px;
+  --tacta-workspace-tab-activity-size: 6px;
+  --tacta-browser-video-switch-width: 160px;
+}

@@ -11,7 +11,7 @@ export const chatComposerStyles = css`
   tacta-queued-messages {
     margin: 0 14px -20px;
   }
-  tacta-queued-messages:has(~ tacta-composer-question),
+  tacta-queued-messages:has(~ composer-question),
   tacta-queued-messages:has(~ .question-notice:not(:empty)) {
     margin-bottom: 10px;
   }
@@ -22,9 +22,8 @@ export const chatComposerStyles = css`
   .question-notice:not(:empty) {
     padding: 0 14px 8px;
     color: var(--tacta-color-muted, #a3a3a5);
-    font: var(--tacta-font-size-caption, var(--tacta-text-sm, 0.75rem)) /
-      var(--tacta-line-height-caption, 1.5)
-      var(--tacta-font-family, "Segoe UI Variable Text", "Segoe UI", "Geist Variable", sans-serif);
+    font: var(--tacta-font-size-caption, var(--tacta-text-sm)) /
+      var(--tacta-line-height-caption, 1.5) var(--tacta-font-family, system-ui, sans-serif);
   }
   .approval-dock {
     display: grid;

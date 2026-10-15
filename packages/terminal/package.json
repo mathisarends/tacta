@@ -1,0 +1,85 @@
+{
+  "name": "@tacta/terminal",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "Tacta terminal extension: composable Lit Web Components",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/register.js",
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathisarends/tacta.git",
+    "directory": "packages/terminal"
+  },
+  "dependencies": {
+    "@tacta/core": "0.1.0",
+    "lit": "^3.3.3",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/addon-search": "^0.16.0",
+    "@xterm/addon-unicode11": "^0.9.0",
+    "@xterm/addon-web-links": "^0.12.0",
+    "@xterm/xterm": "^6.0.0"
+  },
+  "exports": {
+    "./data/terminal-keys": {
+      "types": "./dist/data/terminal-keys.d.ts",
+      "default": "./dist/data/terminal-keys.js"
+    },
+    "./data/terminal-setup": {
+      "types": "./dist/data/terminal-setup.d.ts",
+      "default": "./dist/data/terminal-setup.js"
+    },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    },
+    "./messages/de": {
+      "types": "./dist/messages/de.d.ts",
+      "default": "./dist/messages/de.js"
+    },
+    "./messages/en": {
+      "types": "./dist/messages/en.d.ts",
+      "default": "./dist/messages/en.js"
+    },
+    "./messages": {
+      "types": "./dist/messages/index.d.ts",
+      "default": "./dist/messages/index.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./remote-terminal": {
+      "types": "./dist/remote-terminal.d.ts",
+      "default": "./dist/remote-terminal.js"
+    },
+    "./terminal-search": {
+      "types": "./dist/terminal-search.d.ts",
+      "default": "./dist/terminal-search.js"
+    },
+    "./terminal-shortcuts": {
+      "types": "./dist/terminal-shortcuts.d.ts",
+      "default": "./dist/terminal-shortcuts.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./terminal-session-controller": {
+      "types": "./dist/terminal-session-controller.d.ts",
+      "default": "./dist/terminal-session-controller.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    }
+  }
+}

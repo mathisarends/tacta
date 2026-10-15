@@ -1,0 +1,92 @@
+{
+  "name": "@tacta/browser",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "Tacta browser extension: composable Lit Web Components",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/register.js",
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathisarends/tacta.git",
+    "directory": "packages/browser"
+  },
+  "dependencies": {
+    "@tacta/core": "0.1.0",
+    "lit": "^3.3.3"
+  },
+  "exports": {
+    "./browser-address-bar": {
+      "types": "./dist/browser-address-bar.d.ts",
+      "default": "./dist/browser-address-bar.js"
+    },
+    "./browser-navigation": {
+      "types": "./dist/browser-navigation.d.ts",
+      "default": "./dist/browser-navigation.js"
+    },
+    "./data/browser-address": {
+      "types": "./dist/data/browser-address.d.ts",
+      "default": "./dist/data/browser-address.js"
+    },
+    "./data/browser-input": {
+      "types": "./dist/data/browser-input.d.ts",
+      "default": "./dist/data/browser-input.js"
+    },
+    "./data/browser-types": {
+      "types": "./dist/data/browser-types.d.ts",
+      "default": "./dist/data/browser-types.js"
+    },
+    "./data/browser-viewport": {
+      "types": "./dist/data/browser-viewport.d.ts",
+      "default": "./dist/data/browser-viewport.js"
+    },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    },
+    "./messages/de": {
+      "types": "./dist/messages/de.d.ts",
+      "default": "./dist/messages/de.js"
+    },
+    "./messages/en": {
+      "types": "./dist/messages/en.d.ts",
+      "default": "./dist/messages/en.js"
+    },
+    "./messages": {
+      "types": "./dist/messages/index.d.ts",
+      "default": "./dist/messages/index.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
+    },
+    "./browser-panel": {
+      "types": "./dist/browser-panel.d.ts",
+      "default": "./dist/browser-panel.js"
+    },
+    "./browser-session-controller": {
+      "types": "./dist/browser-session-controller.d.ts",
+      "default": "./dist/browser-session-controller.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./remote-browser": {
+      "types": "./dist/remote-browser.d.ts",
+      "default": "./dist/remote-browser.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    }
+  }
+}

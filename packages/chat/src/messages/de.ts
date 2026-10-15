@@ -1,5 +1,16 @@
 import { format, plural } from "@tacta/core/i18n";
 export const de = {
+  commands: {
+    openSkill: ({ name }: { name: string }) => `Anweisungen für ${name} öffnen`,
+    label: "Slash-Befehle",
+    loading: "Befehle werden geladen …",
+    empty: "Keine passenden Befehle.",
+    retry: "Erneut laden",
+    navigate: "↑ ↓ Navigieren",
+    select: "Enter Auswählen",
+    dismiss: "Esc Schließen",
+    groups: { skill: "Skills", prompt: "Deine Vorlagen", manage: "Verwalten" },
+  },
   working: "Arbeitet",
   worked: ({ duration }: { duration: string }) => `Arbeitete ${duration}`,
   attachments: "Anhänge",

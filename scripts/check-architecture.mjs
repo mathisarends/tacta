@@ -13,22 +13,20 @@ async function collect(directory) {
     }
   }
 }
-for (const name of ["core", "chat", "workspace"]) {
+const manifest = JSON.parse(await readFile("package.json", "utf8"));
+const names = manifest.workspaces.map((path) => path.split("/")[1]);
+for (const name of names) {
   await collect(`packages/${name}/src`);
 }
 const graph = new Map(files.map((file) => [file, []]));
-const packages = new Map([
-  ["core", new Set()],
-  ["chat", new Set()],
-  ["workspace", new Set()],
-]);
+const packages = new Map(names.map((name) => [name, new Set()]));
 
 function resolveModule(file, specifier) {
   if (specifier.startsWith(".")) {
     const base = resolve(dirname(file), specifier.replace(/\.js$/, ".ts"));
     return graph.has(base) ? base : undefined;
   }
-  const match = /^@tacta\/(core|chat|workspace)(?:\/(.*))?$/.exec(specifier);
+  const match = /^@tacta\/([a-z-]+)(?:\/(.*))?$/.exec(specifier);
   if (!match) {
     return undefined;
   }
@@ -52,8 +50,11 @@ for (const file of files) {
     if (dependency) {
       graph.get(file).push(dependency);
     }
-    const match = /^@tacta\/(core|chat|workspace)/.exec(specifier);
+    const match = /^@tacta\/([a-z-]+)/.exec(specifier);
     const owner = file.replaceAll("\\", "/").match(/\/packages\/([^/]+)\//)?.[1];
+    if (owner === "core" && match && match[1] !== "core") {
+      throw new Error("Core must not depend on extensions");
+    }
     if (match && owner !== match[1]) {
       packages.get(owner).add(match[1]);
     }

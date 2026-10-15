@@ -1,7 +1,7 @@
 {
   "name": "@tacta/core",
   "version": "0.1.0",
-  "description": "Reusable UI primitives and workspace components built with Lit",
+  "description": "Tacta core extension: composable Lit Web Components",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -20,14 +20,13 @@
     "**/*.css"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./tokens.css": "./dist/tokens.css",
     "./app-modal": {
       "types": "./dist/app-modal.d.ts",
       "default": "./dist/app-modal.js"
+    },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
     },
     "./element": {
       "types": "./dist/element.d.ts",
@@ -40,6 +39,10 @@
     "./icons": {
       "types": "./dist/icons.d.ts",
       "default": "./dist/icons.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./keyboard/messages/de": {
       "types": "./dist/keyboard/messages/de.d.ts",
@@ -129,13 +132,9 @@
       "types": "./dist/tooltip.d.ts",
       "default": "./dist/tooltip.js"
     },
-    "./define": {
-      "types": "./dist/define.d.ts",
-      "default": "./dist/define.js"
-    }
+    "./tokens.css": "./dist/tokens.css"
   },
   "dependencies": {
-    "lit": "^3.3.3",
-    "lucide": "1.48.0"
+    "lit": "^3.3.3"
   }
 }

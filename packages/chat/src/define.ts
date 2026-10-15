@@ -1,3 +1,4 @@
+import { ComposerCommandMenu } from "./composer/composer-command-menu.js";
 import { ApprovalCard } from "./approval-card.js";
 import { AssistantMessage } from "./assistant-message.js";
 import { ChatAttachment } from "./chat-attachment.js";
@@ -25,6 +26,9 @@ import { registerCoreElements } from "@tacta/core/define";
 
 export function registerChatElements(): void {
   registerCoreElements();
+  if (!customElements.get("tacta-composer-command-menu")) {
+    customElements.define("tacta-composer-command-menu", ComposerCommandMenu);
+  }
   if (!customElements.get("tacta-approval-card")) {
     customElements.define("tacta-approval-card", ApprovalCard);
   }
@@ -98,6 +102,7 @@ export function registerChatElements(): void {
 
 declare global {
   interface HTMLElementTagNameMap {
+    "tacta-composer-command-menu": ComposerCommandMenu;
     "tacta-approval-card": ApprovalCard;
     "tacta-assistant-message": AssistantMessage;
     "tacta-chat-attachment": ChatAttachment;

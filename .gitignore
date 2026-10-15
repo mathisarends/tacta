@@ -3,6 +3,7 @@ dist/
 coverage/
 test-results/
 .vitest/
+.cache/
 *.tsbuildinfo
 *.tgz
 packages/*/LICENSE

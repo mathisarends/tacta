@@ -42,3 +42,6 @@ export type { ChatNavigationEntry } from "./navigation-types.js";
 export type { ToolCallPresentation } from "./tool-calls/presenter.js";
 export type { ChatEventMap } from "./events.js";
 export type { ModelProvider, ProviderIconRenderer } from "./composer/model-provider.js";
+
+export type { ComposerCommand } from "./composer/composer-commands.js";
+export { expandCommand, filterCommands } from "./composer/composer-commands.js";

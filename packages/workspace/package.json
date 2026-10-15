@@ -1,7 +1,7 @@
 {
   "name": "@tacta/workspace",
   "version": "0.1.0",
-  "description": "Reusable UI primitives and workspace components built with Lit",
+  "description": "Tacta workspace extension: composable Lit Web Components",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -20,21 +20,21 @@
     "**/*.css"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
     },
-    "./register": {
-      "types": "./dist/register.d.ts",
-      "default": "./dist/register.js"
-    },
-    "./panel-splitter": {
-      "types": "./dist/panel-splitter.d.ts",
-      "default": "./dist/panel-splitter.js"
+    "./events": {
+      "types": "./dist/events.d.ts",
+      "default": "./dist/events.js"
     },
     "./explorer-splitter": {
       "types": "./dist/explorer-splitter.d.ts",
       "default": "./dist/explorer-splitter.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./messages/de": {
       "types": "./dist/messages/de.d.ts",
@@ -51,6 +51,14 @@
     "./navigation-types": {
       "types": "./dist/navigation-types.d.ts",
       "default": "./dist/navigation-types.js"
+    },
+    "./panel-splitter": {
+      "types": "./dist/panel-splitter.d.ts",
+      "default": "./dist/panel-splitter.js"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "default": "./dist/register.js"
     },
     "./sidebar/conversation-row": {
       "types": "./dist/sidebar/conversation-row.d.ts",
@@ -96,6 +104,10 @@
       "types": "./dist/sidebar/user-profile.d.ts",
       "default": "./dist/sidebar/user-profile.js"
     },
+    "./split-pane": {
+      "types": "./dist/split-pane.d.ts",
+      "default": "./dist/split-pane.js"
+    },
     "./surface-menu": {
       "types": "./dist/surface-menu.d.ts",
       "default": "./dist/surface-menu.js"
@@ -131,22 +143,12 @@
     "./workspace-tabs.styles": {
       "types": "./dist/workspace-tabs.styles.d.ts",
       "default": "./dist/workspace-tabs.styles.js"
-    },
-    "./define": {
-      "types": "./dist/define.d.ts",
-      "default": "./dist/define.js"
-    },
-    "./split-pane": {
-      "types": "./dist/split-pane.d.ts",
-      "default": "./dist/split-pane.js"
-    },
-    "./events": {
-      "types": "./dist/events.d.ts",
-      "default": "./dist/events.js"
     }
   },
   "dependencies": {
     "@tacta/core": "0.1.0",
-    "lit": "^3.3.3"
+    "lit": "^3.3.3",
+    "@tacta/workspace-panel": "0.1.0",
+    "@tacta/sidebar": "0.1.0"
   }
 }

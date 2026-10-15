@@ -2,6 +2,17 @@ import { format, plural } from "@tacta/core/i18n";
 import type { de } from "./de.js";
 
 export const en: typeof de = {
+  commands: {
+    openSkill: ({ name }: { name: string }) => `Open instructions for ${name}`,
+    label: "Slash commands",
+    loading: "Loading commands…",
+    empty: "No matching commands.",
+    retry: "Reload",
+    navigate: "↑ ↓ Navigate",
+    select: "Enter Select",
+    dismiss: "Esc Close",
+    groups: { skill: "Skills", prompt: "Your templates", manage: "Manage" },
+  },
   working: "Working",
   worked: ({ duration }) => `Worked for ${duration}`,
   attachments: "Attachments",

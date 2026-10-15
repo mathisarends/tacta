@@ -1,0 +1,15 @@
+export const de = {
+  title: "Frage",
+  preview: "UI-Vorschau",
+  openPreview: "Frage-UI ausprobieren",
+  previewDescription: "Lokale Vorschau ohne Agenten-Aktion.",
+  close: "Frage schließen",
+  customAnswer: "Oder eigene Antwort schreiben",
+  skip: "Überspringen",
+  submit: "Senden",
+  previewPrompt: "Wie soll ich die Analyse für dich aufbereiten?",
+  previewBrief: "Kompakter Überblick mit den wichtigsten Ergebnissen",
+  previewDetailed: "Ausführliche Analyse mit Hintergründen und nächsten Schritten",
+  answered: "Vorschau beendet · Antwort nur lokal übernommen.",
+  skipped: "Vorschau übersprungen.",
+};

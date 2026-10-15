@@ -12,17 +12,11 @@
   "dependencies": {
     "@tacta/core": "0.1.0",
     "lit": "^3.3.3",
-    "marked": "^18.0.9",
-    "dompurify": "^3.4.14",
-    "@codemirror/language": "^6.13.1",
-    "@codemirror/language-data": "^6.5.2",
-    "@lezer/highlight": "^1.2.5"
+    "@tacta/question": "0.1.0",
+    "@tacta/voice-input": "0.1.0",
+    "@tacta/markdown": "0.1.0"
   },
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
     "./approval-card.styles": {
       "types": "./dist/approval-card.styles.d.ts",
       "default": "./dist/approval-card.styles.js"
@@ -74,6 +68,18 @@
     "./composer/composer-attachments": {
       "types": "./dist/composer/composer-attachments.d.ts",
       "default": "./dist/composer/composer-attachments.js"
+    },
+    "./composer/composer-command-menu.styles": {
+      "types": "./dist/composer/composer-command-menu.styles.d.ts",
+      "default": "./dist/composer/composer-command-menu.styles.js"
+    },
+    "./composer/composer-command-menu": {
+      "types": "./dist/composer/composer-command-menu.d.ts",
+      "default": "./dist/composer/composer-command-menu.js"
+    },
+    "./composer/composer-commands": {
+      "types": "./dist/composer/composer-commands.d.ts",
+      "default": "./dist/composer/composer-commands.js"
     },
     "./composer/composer-draft": {
       "types": "./dist/composer/composer-draft.d.ts",
@@ -143,6 +149,14 @@
       "types": "./dist/composer/reasoning-effort.d.ts",
       "default": "./dist/composer/reasoning-effort.js"
     },
+    "./define": {
+      "types": "./dist/define.d.ts",
+      "default": "./dist/define.js"
+    },
+    "./events": {
+      "types": "./dist/events.d.ts",
+      "default": "./dist/events.js"
+    },
     "./history-messages": {
       "types": "./dist/history-messages.d.ts",
       "default": "./dist/history-messages.js"
@@ -154,6 +168,10 @@
     "./image-viewer": {
       "types": "./dist/image-viewer.d.ts",
       "default": "./dist/image-viewer.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./markdown/highlight-code": {
       "types": "./dist/markdown/highlight-code.d.ts",
@@ -254,19 +272,16 @@
     "./voice-input/voice-input": {
       "types": "./dist/voice-input/voice-input.d.ts",
       "default": "./dist/voice-input/voice-input.js"
-    },
-    "./define": {
-      "types": "./dist/define.d.ts",
-      "default": "./dist/define.js"
-    },
-    "./events": {
-      "types": "./dist/events.d.ts",
-      "default": "./dist/events.js"
     }
   },
-  "description": "Chat messages, tools, composer and model picker built with Lit",
+  "description": "Tacta chat extension: composable Lit Web Components",
   "sideEffects": [
     "./dist/register.js",
     "**/*.css"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathisarends/tacta.git",
+    "directory": "packages/chat"
+  }
 }

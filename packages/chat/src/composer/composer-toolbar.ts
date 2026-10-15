@@ -19,6 +19,7 @@ export class ComposerToolbar extends LitElement {
   @property({ attribute: false }) providerInfo = modelProvider;
   @property({ attribute: false }) renderProviderIcon: ProviderIconRenderer = providerIcon;
   @property({ type: Boolean }) disabled = false;
+  @property({ attribute: false }) optionsDisabled: boolean | undefined;
   @property({ type: Boolean }) running = false;
   @property({ type: Boolean }) stopping = false;
   @property({ type: Boolean }) stopDisabled = false;
@@ -121,7 +122,7 @@ export class ComposerToolbar extends LitElement {
         .models=${this.models}
         .defaultApprovalMode=${this.defaultApprovalMode}
         .options=${this.options}
-        .disabled=${this.disabled}
+        .disabled=${this.optionsDisabled ?? this.disabled}
       ></tacta-composer-settings>
       <div part="actions" class="actions">
         <tacta-voice-input .disabled=${this.disabled} .context=${this.context}></tacta-voice-input>
