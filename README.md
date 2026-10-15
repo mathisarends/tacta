@@ -1,140 +1,118 @@
 # Tacta
 
-Reusable UI components for agentic applications. Built with **Lit, TypeScript and standard Web
-Components**. Use them in Lit or in another frontend through HTML, properties and DOM events.
-
-Tacta owns presentation and interaction. Applications own authentication, routing, transport,
-model execution, file operations and persistence.
+Composable UI components for agent applications, built with Lit and standard Web Components.
+**A small core; install the extensions you need.** Your application owns data, execution,
+transport, routing and persistence.
 
 ## Components
 
-| Package            | Available components                                                                                                                                                                                                                    |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@tacta/core`      | Dialog, segmented tabs, spinner, skeleton, icons, tooltips, keyboard helpers, translations and theme tokens                                                                                                                             |
-| `@tacta/chat`      | Human/assistant messages, streaming message history and navigation, tool calls and details, attachments and image viewer, composer, model picker, provider rail, reasoning/access controls, approvals, questions, queue and voice input |
-| `@tacta/workspace` | Sidebar, conversation rows, profile menu, avatar, rename dialog, workspace tabs, surface picker, panel/explorer resize controls and a slotted split pane                                                                                |
+The question component, used independently of chat:
 
-The TypeScript implementations are in `packages/<package>/src`. Browser and terminal directories
-currently document future extraction; remote session transport stays in the application.
+![Question component](docs/media/question.png)
+
+[Watch choices and free-text answers](docs/media/question-workflow.mp4).
+
+| Package                    | Includes                                                                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `@tacta/core`              | Tokens, locale, icons, keyboard helpers, modal, segmented tabs and loading states. **Lit is its only runtime dependency.**                       |
+| `@tacta/chat`              | Human/assistant messages, streaming history, tools, attachments, composer, slash commands, model/provider picker, reasoning, approvals and queue |
+| `@tacta/question`          | Standalone questions, choices, free text, skip and dismiss                                                                                       |
+| `@tacta/workspace-panel`   | Tabs, drag/reorder, configurable surfaces, picker, split pane and resize handles                                                                 |
+| `@tacta/terminal`          | xterm, output search, interactive sessions and read-only agent output                                                                            |
+| `@tacta/browser`           | Address/navigation, remote video, viewport sizing, keyboard, pointer and clipboard input                                                         |
+| `@tacta/sidebar`           | Conversations, pin/rename/delete menus, navigation and user profile                                                                              |
+| `@tacta/voice-input`       | Dictation with an injectable speech-recognition adapter                                                                                          |
+| `@tacta/image-editor`      | Drawing, text, eraser, colors, undo/redo, zoom and PNG export                                                                                    |
+| `@tacta/file-preview`      | Lazy PDF, DOCX, spreadsheet and media viewers                                                                                                    |
+| `@tacta/file-explorer`     | Filterable file tree, breadcrumbs, document tabs, toolbar and slotted document workspace                                                         |
+| `@tacta/markdown`          | Sanitized Markdown and lazy syntax highlighting                                                                                                  |
+| `@tacta/markdown-document` | CodeMirror source/Markdown editor and live preview                                                                                               |
+| `@tacta/code-diff`         | Highlighted diff hunks                                                                                                                           |
+| `@tacta/controls`          | Inputs, password field, checkbox, select, locale control, tabs, settings rows and sections                                                       |
+| `@tacta/settings`          | Controlled profile, plugin, prompt-template and approval-settings views                                                                          |
+| `@tacta/search`            | Action and conversation search                                                                                                                   |
+| `@tacta/notifications`     | Toasts with configurable, independent stores                                                                                                     |
+| `@tacta/workspace`         | Compatibility facade for workspace-panel and sidebar                                                                                             |
+
+Heavy dependencies belong to their extensions. Installing core or question does not install
+xterm, document parsers or CodeMirror. [Choose packages and their dependencies](docs/installation.md).
+
+## Use
+
+Packages are not published yet. Build and pack them locally:
+
+```sh
+npm ci
+npm run pack:packages
+```
+
+Install the core and question archives in your application:
+
+```sh
+npm install /path/to/tacta-core-0.1.0.tgz /path/to/tacta-question-0.1.0.tgz
+```
+
+```ts
+import "@tacta/core/tokens.css";
+import "@tacta/question/register";
+import type { ComposerQuestionResponse } from "@tacta/question";
+
+const question = document.createElement("tacta-composer-question");
+question.question = {
+  id: "review",
+  prompt: "How should I present the review?",
+  options: [{ id: "brief", label: "A short summary" }],
+};
+question.addEventListener("question-response", (event) => {
+  const response = (event as CustomEvent<ComposerQuestionResponse>).detail;
+  // Handle the response in your application.
+});
+document.body.append(question);
+```
+
+Package roots export classes without registration side effects. Import `register` explicitly,
+or use the `define` registration functions with compatible subclasses. Components accept typed
+properties and emit DOM events, so the same elements work with Lit and other frameworks.
+
+## Component recordings
+
+Terminal input and output search, cropped to the terminal:
+
+[![Terminal workflow](docs/media/terminal-workflow.gif)](docs/media/terminal-workflow.mp4)
+
+Image annotations, undo/redo and PNG export:
+
+[![Image editor](docs/media/image-editor.png)](docs/media/image-annotations.mp4)
+
+These captures use actual Tacta components with local fixture data and adapters. They contain no
+showcase website. [All screenshots, recordings and reproduction instructions](docs/media.md).
+
+## Documentation
+
+- [Extension catalog and usage guides](docs/README.md)
+- [Installation and package dependencies](docs/installation.md)
+- [Composition, custom surfaces, themes and localization](docs/composition.md)
+- [Maximus feature coverage and source provenance](docs/maximus-parity.md)
+
+All public tokens use `--tacta-*`. Light/dark regions, slots, CSS parts and presentation callbacks
+let applications supply their own styling and behavior. Terminal and browser use typed connectors;
+the library imports no Maximus API, authentication or runtime client.
 
 ## Develop
 
-Node 22.12+ and npm are required. Node 24 is recommended.
+Node 22.12+ and npm:
 
 ```sh
 npm ci
 npm run build
 npm exec playwright install chromium
 npm test
-npm run dev
-```
-
-The plain HTML playground runs at `http://127.0.0.1:5173`. Other checks:
-
-```sh
 npm run typecheck
-npm run format:check
+npm run check:architecture
 npm run build:examples
+npm run format:check
 ```
 
-## Install
-
-The packages are not published yet. Build and pack them from this repository:
-
-```sh
-npm run build
-npm pack --workspace @tacta/core
-npm pack --workspace @tacta/chat
-npm pack --workspace @tacta/workspace
-```
-
-Install the generated archives together in your frontend:
-
-```sh
-npm install /path/to/tacta-core-0.1.0.tgz /path/to/tacta-chat-0.1.0.tgz /path/to/tacta-workspace-0.1.0.tgz
-```
-
-## Use
-
-Register the packages you need. Lit is included as a dependency; consumers do not need to write Lit code.
-
-```ts
-import "@tacta/core/tokens.css"; // optional light/dark defaults
-import "@tacta/chat/register";
-import "@tacta/workspace/register";
-```
-
-```html
-<tacta-split-pane value="320" reserve="250" min-width="185">
-  <tacta-chat-message-list></tacta-chat-message-list>
-  <aside slot="panel">Your workspace</aside>
-</tacta-split-pane>
-<tacta-chat-composer></tacta-chat-composer>
-```
-
-Supply object data through properties and handle intent with DOM events:
-
-```ts
-import type { ChatComposer, ComposerMessage, ChatMessageList } from "@tacta/chat";
-
-const history = document.querySelector<ChatMessageList>("tacta-chat-message-list")!;
-history.messages = [{ id: "1", role: "human", text: "Hello", timestamp: new Date().toISOString() }];
-
-const composer = document.querySelector<ChatComposer>("tacta-chat-composer")!;
-composer.models = modelsFromYourApplication;
-composer.addEventListener("send-message", (event) => {
-  const message = (event as CustomEvent<ComposerMessage>).detail;
-  // Your application sends the message and updates history.messages as data arrives.
-});
-```
-
-In a Lit component, use the same properties and events:
-
-```ts
-html`<tacta-chat-composer
-  .models=${this.models}
-  .options=${this.options}
-  .running=${this.running}
-  @send-message=${this.sendMessage}
-></tacta-chat-composer>`;
-```
-
-Package roots and component subpaths export classes without registration side effects. The explicit
-`register` entries define tags. The `define` entries expose registration functions for applications
-that register compatible subclasses first.
-
-## Customize
-
-All public styling tokens use the `--tacta-` prefix. Scope them to a component or a region:
-
-```css
-.workspace {
-  --tacta-font-family: system-ui, sans-serif;
-  --tacta-color-surface: #f2e8fa;
-  --tacta-color-text: #35234b;
-  --tacta-color-accent: #7c3aed;
-  --tacta-color-focus: #7c3aed;
-  --tacta-radius-panel: 12px;
-}
-tacta-explorer-splitter::part(handle) {
-  border-radius: 4px;
-}
-```
-
-Optional `data-tacta-theme="light"` and `"dark"` regions provide complete defaults. Components also
-include fallback styles without the token stylesheet. Use slots for sidebar branding, segmented
-panels and split-pane content. Set the locale explicitly with `setLocale("de")` from `@tacta/core`;
-Tacta never reads application storage or reloads the page.
-
-Tool UI accepts a `presentCall` callback for application-specific titles and activity text. The
-model picker accepts `providerInfo` and `renderProviderIcon` callbacks for provider grouping and
-branding. Applications supply model lists; Tacta never loads them from an API.
-
-## Source and independence
-
-The components are ported from existing Maximus UI implementations. Maximus is a **read-only design
-reference** and remains unchanged. All development, examples, tests and commits live in this repository.
-Tacta imports no Maximus or Vizron modules and contains no application integration scripts.
-
-Use `npm run pack:packages` to build and package all three libraries. See [the migration report](docs/migration-report.md)
-for the extraction boundaries and validation. MIT licensed.
+UI implementations are adapted from Maximus `origin/main` at
+`e2d2e3f730b2ec9dba40ed17d8339961d04d6a5b`. Source application files remain unchanged.
+Tacta is standalone, MIT licensed, and does not deploy or publish an application.

@@ -1,0 +1,67 @@
+{
+  "screenshots": [
+    "question.png",
+    "question-light.png",
+    "composer.png",
+    "commands.png",
+    "chat.png",
+    "approval.png",
+    "workspace.png",
+    "files.png",
+    "editor.png",
+    "diff.png",
+    "explorer.png",
+    "settings.png",
+    "search.png",
+    "sidebar.png",
+    "notifications.png",
+    "terminal.png",
+    "terminal-search.png",
+    "browser.png",
+    "image-editor.png"
+  ],
+  "videos": [
+    {
+      "file": "question-workflow.mp4",
+      "crop": {
+        "x": 16,
+        "y": 16,
+        "width": 640,
+        "height": 234
+      }
+    },
+    {
+      "file": "terminal-workflow.mp4",
+      "crop": {
+        "x": 16,
+        "y": 16,
+        "width": 800,
+        "height": 400
+      }
+    },
+    {
+      "file": "browser-workflow.mp4",
+      "crop": {
+        "x": 16,
+        "y": 16,
+        "width": 800,
+        "height": 52
+      }
+    },
+    {
+      "file": "image-annotations.mp4",
+      "crop": {
+        "x": 16,
+        "y": 16,
+        "width": 800,
+        "height": 560
+      }
+    }
+  ],
+  "checks": [
+    "Question choice and free-text response",
+    "Terminal input and search",
+    "Browser stream, address, back and fit",
+    "Image draw, text, undo/redo and PNG export"
+  ]
+}

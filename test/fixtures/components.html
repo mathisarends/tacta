@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-tacta-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Component test fixture</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #181818;
+      }
+      #fixture {
+        margin: 16px;
+        width: 800px;
+        color: var(--tacta-color-text);
+        font-family: system-ui, sans-serif;
+      }
+      #fixture > * {
+        box-sizing: border-box;
+        width: 100%;
+      }
+    </style>
+    <script type="module" src="./components.ts"></script>
+  </head>
+  <body>
+    <div id="fixture"></div>
+  </body>
+</html>

@@ -1,5 +1,8 @@
 # Migration report
 
+This records the initial extraction. See the [current coverage and provenance report](maximus-parity.md)
+and [extension catalog](README.md) for the updated package layout and feature set.
+
 Tacta is at `C:/code/tacta` (Git Bash: `/c/code/tacta`). The source is the Maximus Lit frontend at
 `C:/FH/FEP/maximus-trading/frontend`, initially audited from commit
 `61cc725dbf5cef6374c203e61f5a9003dca6e36d`.
