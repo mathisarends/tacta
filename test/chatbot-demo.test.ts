@@ -56,6 +56,8 @@ it("streams a real composer submission, queues a follow-up and isolates a new co
 it("applies settings through components and recovers after a simulated transport error", async () => {
   const app = await mount();
   await userEvent.click(app.shadowRoot!.querySelector<HTMLButtonElement>("[aria-pressed]")!);
+  const workspace = app.shadowRoot!.querySelector("tacta-demo-workspace")!;
+  await userEvent.click(workspace.shadowRoot!.querySelector<HTMLButtonElement>(".tools button")!);
   const theme = app.shadowRoot!.querySelector("tacta-select")!;
   await theme.updateComplete;
   theme.shadowRoot!.querySelector("button")!.focus();

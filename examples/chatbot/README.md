@@ -22,6 +22,12 @@ On small screens the header's new-chat and search controls provide access to con
 
 ## Composition
 
+Workspace opens a Maximus-style surface picker and tab strip. Open Browser, Terminal and Files
+from the picker or the + menu; select, reorder and close tabs, or maximize/restore the panel.
+Preferences are available separately above the surface content. Browser displays a sandboxed local
+document, Terminal sample output, and Files selectable sample documents. These previews do not
+connect to remote browser sessions, execute commands or access the filesystem.
+
 | File                | Responsibility                                                        |
 | ------------------- | --------------------------------------------------------------------- |
 | `chatbot-app.ts`    | Lit state, conversation lifecycle, queue and component event handlers |

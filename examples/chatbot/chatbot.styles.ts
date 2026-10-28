@@ -85,6 +85,13 @@ export const chatbotStyles = css`
     display: flex;
     flex-direction: column;
   }
+  tacta-split-pane.maximized::part(main) {
+    display: none;
+  }
+  tacta-split-pane.maximized::part(panel) {
+    width: 100% !important;
+    flex: 1;
+  }
   tacta-chat-message-list {
     flex: 1;
     min-height: 0;

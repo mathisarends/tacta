@@ -16,6 +16,7 @@ import type {
 import type { SidebarItem, SidebarRenameDetail } from "@tacta/workspace";
 import { streamReply } from "./mock-reply.js";
 import { chatbotStyles } from "./chatbot.styles.js";
+import "./demo-workspace.js";
 
 type Conversation = SidebarItem & { messages: Message[] };
 const models: ChatModelOption[] = [
@@ -52,6 +53,7 @@ export class TactaChatbotDemo extends LitElement {
   @state() private running = false;
   @state() private searchOpen = false;
   @state() private panelOpen = false;
+  @state() private maximized = false;
   @state() private collapsed = false;
   @state() private theme = "dark";
   @state() private name = "Alex";
@@ -260,82 +262,97 @@ export class TactaChatbotDemo extends LitElement {
 
   private renderPanel() {
     const card = cards[this.cardPage - 1]!;
-    return html`<aside slot="panel" class="inspector">
-      <span class="eyebrow">Your workspace</span>
-      <h2>Make it yours.</h2>
-      <p>A working composition of Tacta's public components.</p>
-      <tacta-pill-tabs
-        label="Workspace sections"
-        .tabs=${[
-          { id: "settings", label: "Settings" },
-          { id: "library", label: "Library" },
-        ]}
-      >
-        <div slot="settings">
-          <tacta-settings-section
-            heading="Preferences"
-            description="Changes apply to this demo session."
-          >
-            <tacta-settings-row heading="Your name"
-              ><tacta-text-input
-                label="Display name"
-                .value=${this.name}
-                @value-change=${(event: CustomEvent<string>) => {
-                  this.name = event.detail;
-                }}
-              ></tacta-text-input
-            ></tacta-settings-row>
-            <tacta-settings-row heading="Appearance" inline
-              ><tacta-select
-                slot="control"
-                label="Theme"
-                .value=${this.theme}
-                .options=${[
-                  { value: "dark", label: "Dark" },
-                  { value: "light", label: "Light" },
-                ]}
-                @value-change=${(event: CustomEvent<string>) => {
-                  this.theme = event.detail;
-                }}
-              ></tacta-select
-            ></tacta-settings-row>
-            <tacta-settings-row
-              heading="Try an error"
-              description="The next response will fail. Send again to recover."
-              ><tacta-checkbox
-                label="Fail next response"
-                .checked=${this.failNext}
-                @checked-change=${(event: CustomEvent<boolean>) => {
-                  this.failNext = event.detail;
-                }}
-              ></tacta-checkbox
-            ></tacta-settings-row>
-          </tacta-settings-section>
-        </div>
-        <div slot="library" class="stack">
-          <div class="component-card">
-            <h3>${card.title}</h3>
-            <p>${card.text}</p>
-            <p><code>${card.code}</code></p>
+    return html`<tacta-demo-workspace
+      slot="panel"
+      .maximized=${this.maximized}
+      @close-workspace=${() => {
+        this.panelOpen = false;
+        this.maximized = false;
+      }}
+      @open-sidebar=${() => {
+        this.collapsed = false;
+      }}
+      @toggle-maximize=${() => {
+        this.maximized = !this.maximized;
+      }}
+    >
+      <aside class="inspector">
+        <span class="eyebrow">Your workspace</span>
+        <h2>Make it yours.</h2>
+        <p>A working composition of Tacta's public components.</p>
+        <tacta-pill-tabs
+          label="Workspace sections"
+          .tabs=${[
+            { id: "settings", label: "Settings" },
+            { id: "library", label: "Library" },
+          ]}
+        >
+          <div slot="settings">
+            <tacta-settings-section
+              heading="Preferences"
+              description="Changes apply to this demo session."
+            >
+              <tacta-settings-row heading="Your name"
+                ><tacta-text-input
+                  label="Display name"
+                  .value=${this.name}
+                  @value-change=${(event: CustomEvent<string>) => {
+                    this.name = event.detail;
+                  }}
+                ></tacta-text-input
+              ></tacta-settings-row>
+              <tacta-settings-row heading="Appearance" inline
+                ><tacta-select
+                  slot="control"
+                  label="Theme"
+                  .value=${this.theme}
+                  .options=${[
+                    { value: "dark", label: "Dark" },
+                    { value: "light", label: "Light" },
+                  ]}
+                  @value-change=${(event: CustomEvent<string>) => {
+                    this.theme = event.detail;
+                  }}
+                ></tacta-select
+              ></tacta-settings-row>
+              <tacta-settings-row
+                heading="Try an error"
+                description="The next response will fail. Send again to recover."
+                ><tacta-checkbox
+                  label="Fail next response"
+                  .checked=${this.failNext}
+                  @checked-change=${(event: CustomEvent<boolean>) => {
+                    this.failNext = event.detail;
+                  }}
+                ></tacta-checkbox
+              ></tacta-settings-row>
+            </tacta-settings-section>
           </div>
-          <tacta-page-pagination
-            .page=${this.cardPage}
-            .pageCount=${cards.length}
-            @page-change=${(event: CustomEvent<number>) => {
-              this.cardPage = event.detail;
-            }}
-          ></tacta-page-pagination>
-          <div class="component-card">
-            <h3>Application boundary</h3>
-            <p>
-              The mock transport, conversation state and queue are implemented in
-              <code>examples/chatbot</code>. Replace the async generator with your own backend.
-            </p>
+          <div slot="library" class="stack">
+            <div class="component-card">
+              <h3>${card.title}</h3>
+              <p>${card.text}</p>
+              <p><code>${card.code}</code></p>
+            </div>
+            <tacta-page-pagination
+              .page=${this.cardPage}
+              .pageCount=${cards.length}
+              @page-change=${(event: CustomEvent<number>) => {
+                this.cardPage = event.detail;
+              }}
+            ></tacta-page-pagination>
+            <div class="component-card">
+              <h3>Application boundary</h3>
+              <p>
+                The mock transport, conversation state and queue are implemented in
+                <code>examples/chatbot</code>. Replace the async generator with your own backend.
+              </p>
+            </div>
+            <a href="/">Open the component playground ↗</a>
           </div>
-          <a href="/">Open the component playground ↗</a>
-        </div>
-      </tacta-pill-tabs>
-    </aside>`;
+        </tacta-pill-tabs>
+      </aside></tacta-demo-workspace
+    >`;
   }
 
   override render() {
@@ -402,7 +419,13 @@ export class TactaChatbotDemo extends LitElement {
             </button>
           </div>
         </header>
-        <tacta-split-pane .collapsed=${!this.panelOpen} value="350" min-width="280" reserve="320">
+        <tacta-split-pane
+          class=${this.maximized && this.panelOpen ? "maximized" : ""}
+          .collapsed=${!this.panelOpen}
+          value="520"
+          min-width="280"
+          reserve="320"
+        >
           <div class="chat">
             ${this.messages.length ? html`<tacta-chat-message-list .messages=${this.messages} .conversationId=${this.activeId} .sending=${this.running}></tacta-chat-message-list>` : this.renderWelcome()}
             ${this.error ? html`<div class="error" role="alert">${this.error}</div>` : nothing}
