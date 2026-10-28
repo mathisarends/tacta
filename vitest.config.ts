@@ -10,6 +10,7 @@ export default defineConfig({
       "marked",
       "lit/directives/guard.js",
       "lit/directives/live.js",
+      "lit/directives/keyed.js",
       "lit/directives/unsafe-html.js",
     ],
   },
