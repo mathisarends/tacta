@@ -19,7 +19,8 @@ Tacta is at `C:/code/tacta` (Git Bash: `/c/code/tacta`). The source is the Maxim
 | Icons, tooltips, menu positioning, keyboard helpers and styles        | Existing shared helpers                                                                       | `packages/core/src/`                   |
 | Sanitized markdown and lazy code highlighting                         | `shared/markdown/`                                                                            | `packages/chat/src/markdown/`          |
 
-The expanded library contains 39 registered Web Components. It compiles with strict TypeScript and
+The initial extraction contained 39 registered Web Components. The [October 2026 audit](shared-ui-audit.md)
+adds 11 core controls and a Lit chatbot example, bringing the library to 50. It compiles with strict TypeScript and
 has explicit ESM/declaration exports. Its package graph is `chat → core` and `workspace → core`.
 
 ## Application boundaries
@@ -48,6 +49,9 @@ application integration scripts. Consumers may install its independently built p
 projects; all authoring and validation for the library happen here.
 
 ## Validation
+
+The following records the initial extraction. See the [current audit](shared-ui-audit.md) and
+repository tests for the subsequent controls and Lit application checks.
 
 - Build and strict typecheck passed.
 - 34 Chromium component tests passed, covering resize/cancellation, slots, keyboard navigation,

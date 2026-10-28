@@ -17,7 +17,7 @@ export const pillTabsStyles = css`
   .navigation {
     flex: 0 0 auto;
     padding: 16px 0;
-    margin-bottom: var(--tabs-content-gap, 24px);
+    margin-bottom: var(--tacta-tabs-content-gap, 24px);
   }
   :host([scrollable]) .navigation {
     margin-bottom: 0;
@@ -30,9 +30,12 @@ export const pillTabsStyles = css`
   .tabs {
     display: flex;
     gap: 4px;
-    width: min(var(--tabs-content-width, 100%), calc(100% - 2 * var(--tabs-inline-gutter, 0px)));
+    width: min(
+      var(--tacta-tabs-content-width, 100%),
+      calc(100% - 2 * var(--tacta-tabs-inline-gutter, 0px))
+    );
     margin-inline: auto;
-    padding-inline-start: var(--tabs-leading-space, 0px);
+    padding-inline-start: var(--tacta-tabs-leading-space, 0px);
     overflow-x: auto;
   }
   .section-picker {
@@ -87,9 +90,9 @@ export const pillTabsStyles = css`
   }
   @media (max-width: 800px) {
     :host([compact]) .navigation {
-      padding: 8px var(--tacta-mobile-page-gutter, initial);
+      padding: 8px var(--tacta-mobile-page-gutter, 16px);
       padding-inline-start: calc(
-        var(--tacta-mobile-page-gutter, initial) + var(--tabs-leading-space, 0px)
+        var(--tacta-mobile-page-gutter, 16px) + var(--tacta-tabs-leading-space, 0px)
       );
     }
     :host([compact]) .tabs {

@@ -10,7 +10,7 @@ model execution, file operations and persistence.
 
 | Package            | Available components                                                                                                                                                                                                                    |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@tacta/core`      | Dialog, segmented tabs, spinner, skeleton, icons, tooltips, keyboard helpers, translations and theme tokens                                                                                                                             |
+| `@tacta/core`      | Dialog, text input, checkbox, select, segmented/pill tabs, breadcrumbs, pagination, search and filters, settings rows/sections, save indicator, spinner, skeleton, icons, tooltips, keyboard helpers, translations and theme tokens     |
 | `@tacta/chat`      | Human/assistant messages, streaming message history and navigation, tool calls and details, attachments and image viewer, composer, model picker, provider rail, reasoning/access controls, approvals, questions, queue and voice input |
 | `@tacta/workspace` | Sidebar, conversation rows, profile menu, avatar, rename dialog, workspace tabs, surface picker, panel/explorer resize controls and a slotted split pane                                                                                |
 
@@ -29,10 +29,15 @@ npm test
 npm run dev
 ```
 
-The plain HTML playground runs at `http://127.0.0.1:5173`. Other checks:
+The plain HTML playground runs at `http://127.0.0.1:5173`.
+The **interactive Lit chatbot** runs at `http://127.0.0.1:5173/chatbot.html`: conversations,
+simulated streaming, stop/queue, search, settings, light/dark themes and error recovery.
+See [the example guide](examples/chatbot/README.md) for the Lit composition and backend boundary.
+`npm run build:examples` builds both entry points. Other checks:
 
 ```sh
 npm run typecheck
+npm run check:architecture
 npm run format:check
 npm run build:examples
 ```
@@ -138,3 +143,6 @@ Tacta imports no Maximus or Vizron modules and contains no application integrati
 
 Use `npm run pack:packages` to build and package all three libraries. See [the migration report](docs/migration-report.md)
 for the extraction boundaries and validation. MIT licensed.
+
+The [October 2026 shared UI audit](docs/shared-ui-audit.md) records the additional Maximus components
+ported in this pass and the remaining candidates, including larger document/media viewers.

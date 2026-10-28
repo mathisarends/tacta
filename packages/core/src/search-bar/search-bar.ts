@@ -94,8 +94,9 @@ export class SearchBar extends LitElement {
   }
 
   protected override firstUpdated(): void {
-    this.renderRoot.querySelector("dialog")?.showModal();
-    this.renderRoot.querySelector("input")?.focus();
+    if (!this.isConnected) {
+      return;
+    }
     this.renderRoot.querySelector(".item.selected")?.scrollIntoView({ block: "nearest" });
     this.search();
   }

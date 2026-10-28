@@ -8,6 +8,36 @@ afterEach(() => {
   setLocale("en");
 });
 
+it("can remove search before its first render and reconnect without a stray modal", async () => {
+  const search = document.createElement("tacta-search-bar");
+  document.body.append(search);
+  search.remove();
+  await search.updateComplete;
+  expect(search.shadowRoot!.querySelector("dialog")!.open).toBe(false);
+  document.body.append(search);
+  await search.updateComplete;
+  await expect.poll(() => search.shadowRoot!.querySelector("dialog")!.matches(":modal")).toBe(true);
+});
+
+it("save status replaces success with a new save and clears the indicator on error", async () => {
+  const status = document.createElement("tacta-save-indicator");
+  status.savingLabel = "Saving";
+  status.savedLabel = "Saved";
+  status.state = "saving";
+  document.body.append(status);
+  await status.updateComplete;
+  expect(status.shadowRoot!.querySelector('[role="status"]')!.textContent).toContain("Saving");
+  status.state = "saved";
+  await expect.poll(() => status.shadowRoot!.querySelector(".success")).not.toBeNull();
+  status.state = "saving";
+  await status.updateComplete;
+  expect(status.shadowRoot!.querySelector(".success")).toBeNull();
+  expect(status.shadowRoot!.querySelector("tacta-spinner")).not.toBeNull();
+  status.state = "error";
+  await status.updateComplete;
+  expect(status.shadowRoot!.querySelector("tacta-spinner")).toBeNull();
+});
+
 it("submits and resets encapsulated form controls and respects disabled fieldsets", async () => {
   const form = document.createElement("form");
   form.innerHTML = `<fieldset><tacta-text-input name="email" label="Email" type="email" required></tacta-text-input>
