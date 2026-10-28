@@ -5,7 +5,7 @@ import { keyed } from "lit/directives/keyed.js";
 import "@tacta/core/register";
 import "@tacta/chat/register";
 import "@tacta/workspace/register";
-import type { SearchItem } from "@tacta/core";
+import { icon, type SearchItem } from "@tacta/core";
 import type {
   Message,
   ComposerMessage,
@@ -368,7 +368,8 @@ export class TactaChatbotDemo extends LitElement {
         }}
       >
         <span slot="brand" class="brand"
-          ><span class="brand-mark">t</span>${this.collapsed ? nothing : "tacta"}</span
+          ><span class="brand-mark">${icon("message", 22)}</span
+          >${this.collapsed ? nothing : "tacta"}</span
         >
       </tacta-side-bar>
       <main class="workspace">
@@ -379,7 +380,7 @@ export class TactaChatbotDemo extends LitElement {
           <div class="header-actions">
             <span class="badge">Local demo</span>
             <button class="icon-button" aria-label="New conversation" @click=${this.newChat}>
-              ＋
+              ${icon("newChat", 18)}
             </button>
             <button
               class="icon-button"
@@ -388,7 +389,7 @@ export class TactaChatbotDemo extends LitElement {
                 this.searchOpen = true;
               }}
             >
-              ⌕
+              ${icon("search", 18)}
             </button>
             <button
               class="button"

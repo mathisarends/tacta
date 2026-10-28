@@ -9,8 +9,8 @@ export const chatbotStyles = css`
     background: var(--tacta-color-background);
   }
   .shell {
-    --tacta-color-accent: #a7d8a0;
-    --tacta-color-on-accent: #17251a;
+    --tacta-font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+    --tacta-font-size-chat: 1rem;
     height: 100%;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -18,8 +18,13 @@ export const chatbotStyles = css`
     color: var(--tacta-color-text);
   }
   .shell[data-tacta-theme="light"] {
-    --tacta-color-accent: #397345;
-    --tacta-color-on-accent: white;
+    --tacta-color-accent: #202124;
+    --tacta-color-accent-hover: #343536;
+    --tacta-color-on-accent: #ffffff;
+    --tacta-color-focus: #667085;
+    --tacta-color-selected: #ececee;
+    --tacta-color-accent-soft: #2021240a;
+    --tacta-color-error: #b42318;
   }
   tacta-side-bar {
     width: 260px;
@@ -33,19 +38,16 @@ export const chatbotStyles = css`
     align-items: center;
     gap: 10px;
     padding: 8px;
-    font-weight: 650;
-    letter-spacing: -0.04em;
-    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    font-size: 20px;
   }
   .brand-mark {
     display: grid;
     place-items: center;
     width: 27px;
     height: 27px;
-    border-radius: 8px;
-    background: var(--tacta-color-accent);
-    color: var(--tacta-color-on-accent);
-    font-size: 18px;
+    color: var(--tacta-color-muted);
   }
   .workspace {
     display: flex;
@@ -54,7 +56,7 @@ export const chatbotStyles = css`
     min-width: 0;
   }
   header {
-    min-height: 72px;
+    min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -68,20 +70,10 @@ export const chatbotStyles = css`
     gap: 10px;
   }
   .badge {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-size: 12px;
+    letter-spacing: normal;
     color: var(--tacta-color-muted);
     white-space: nowrap;
-  }
-  .badge::before {
-    content: "";
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin-right: 8px;
-    border-radius: 50%;
-    background: var(--tacta-color-accent);
   }
   tacta-split-pane {
     flex: 1;
@@ -102,30 +94,36 @@ export const chatbotStyles = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: min(720px, 100%);
     margin: auto;
     padding: 32px;
   }
   .eyebrow {
-    color: var(--tacta-color-accent);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    color: var(--tacta-color-muted);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: normal;
   }
   h1 {
-    font-size: clamp(28px, 4vw, 44px);
-    line-height: 1.12;
-    margin: 15px 0;
-    letter-spacing: -0.05em;
-    font-weight: 500;
+    font-size: clamp(26px, 2.75vw, 36px);
+    line-height: 1.3;
+    margin: 16px 0;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    text-align: center;
+    text-wrap: balance;
     max-width: 550px;
   }
   .intro {
     max-width: 470px;
     color: var(--tacta-color-muted);
+    text-align: center;
+    text-wrap: balance;
     margin: 0 0 26px;
   }
   .suggestions {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
@@ -142,7 +140,7 @@ export const chatbotStyles = css`
   }
   .suggestion:hover {
     background: var(--tacta-color-surface);
-    border-color: var(--tacta-color-accent);
+    border-color: var(--tacta-color-border-strong);
   }
   .suggestion span {
     display: block;
@@ -170,12 +168,20 @@ export const chatbotStyles = css`
   }
   .inspector h2 {
     margin: 6px 0;
-    font-size: 23px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
   }
   .inspector p {
     color: var(--tacta-color-muted);
     font-size: 13px;
+  }
+  .header-actions > .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-actions > .button[aria-pressed="true"] {
+    background: var(--tacta-color-selected);
   }
   .inspector tacta-pill-tabs {
     margin-top: 24px;
