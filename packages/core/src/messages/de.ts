@@ -1,4 +1,11 @@
 export const de = {
+  pagination: {
+    label: "Seitennavigation",
+    previous: "Zurück",
+    next: "Weiter",
+    pageNumber: ({ current, total }: { current: string; total: string }) =>
+      `Seite ${current} von ${total}`,
+  },
   breadcrumb: "Brotkrumen",
   close: "Schließen",
   withShortcut: ({ label, shortcut }: { label: string; shortcut: string }) =>

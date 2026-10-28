@@ -132,6 +132,86 @@
     "./define": {
       "types": "./dist/define.d.ts",
       "default": "./dist/define.js"
+    },
+    "./select/app-select": {
+      "types": "./dist/select/app-select.d.ts",
+      "default": "./dist/select/app-select.js"
+    },
+    "./select/app-select.styles": {
+      "types": "./dist/select/app-select.styles.d.ts",
+      "default": "./dist/select/app-select.styles.js"
+    },
+    "./settings/settings-row": {
+      "types": "./dist/settings/settings-row.d.ts",
+      "default": "./dist/settings/settings-row.js"
+    },
+    "./settings/settings-section": {
+      "types": "./dist/settings/settings-section.d.ts",
+      "default": "./dist/settings/settings-section.js"
+    },
+    "./page-pagination": {
+      "types": "./dist/page-pagination.d.ts",
+      "default": "./dist/page-pagination.js"
+    },
+    "./page-pagination.styles": {
+      "types": "./dist/page-pagination.styles.d.ts",
+      "default": "./dist/page-pagination.styles.js"
+    },
+    "./pill-tabs": {
+      "types": "./dist/pill-tabs.d.ts",
+      "default": "./dist/pill-tabs.js"
+    },
+    "./pill-tabs.styles": {
+      "types": "./dist/pill-tabs.styles.d.ts",
+      "default": "./dist/pill-tabs.styles.js"
+    },
+    "./breadcrumb/app-breadcrumb": {
+      "types": "./dist/breadcrumb/app-breadcrumb.d.ts",
+      "default": "./dist/breadcrumb/app-breadcrumb.js"
+    },
+    "./save-indicator": {
+      "types": "./dist/save-indicator.d.ts",
+      "default": "./dist/save-indicator.js"
+    },
+    "./search-bar/search-bar": {
+      "types": "./dist/search-bar/search-bar.d.ts",
+      "default": "./dist/search-bar/search-bar.js"
+    },
+    "./search-bar/search-bar.styles": {
+      "types": "./dist/search-bar/search-bar.styles.d.ts",
+      "default": "./dist/search-bar/search-bar.styles.js"
+    },
+    "./search-bar/search-filters": {
+      "types": "./dist/search-bar/search-filters.d.ts",
+      "default": "./dist/search-bar/search-filters.js"
+    },
+    "./search-bar/types": {
+      "types": "./dist/search-bar/types.d.ts",
+      "default": "./dist/search-bar/types.js"
+    },
+    "./search-bar/messages/index": {
+      "types": "./dist/search-bar/messages/index.d.ts",
+      "default": "./dist/search-bar/messages/index.js"
+    },
+    "./search-bar/messages/en": {
+      "types": "./dist/search-bar/messages/en.d.ts",
+      "default": "./dist/search-bar/messages/en.js"
+    },
+    "./search-bar/messages/de": {
+      "types": "./dist/search-bar/messages/de.d.ts",
+      "default": "./dist/search-bar/messages/de.js"
+    },
+    "./focus-containment": {
+      "types": "./dist/focus-containment.d.ts",
+      "default": "./dist/focus-containment.js"
+    },
+    "./text-input": {
+      "types": "./dist/text-input.d.ts",
+      "default": "./dist/text-input.js"
+    },
+    "./checkbox": {
+      "types": "./dist/checkbox.d.ts",
+      "default": "./dist/checkbox.js"
     }
   },
   "dependencies": {

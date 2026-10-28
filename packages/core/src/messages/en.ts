@@ -1,6 +1,12 @@
 import type { de } from "./de.js";
 
 export const en: typeof de = {
+  pagination: {
+    label: "Pagination",
+    previous: "Previous",
+    next: "Next",
+    pageNumber: ({ current, total }) => `Page ${current} of ${total}`,
+  },
   breadcrumb: "Breadcrumb",
   close: "Close",
   withShortcut: ({ label, shortcut }) => (shortcut ? `${label} · ${shortcut}` : label),
